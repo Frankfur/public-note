@@ -1,11 +1,11 @@
 @font-face {
   font-family: "HarmonyOS Sans Light";
   src: url("./fonts/harmonyos-sans/HarmonyOS_Sans_Light.ttf") format("truetype");
-  /* src: url("./fonts/harmonyos-sans/HarmonyOS_Sans_Bold.ttf") format("truetype"); */
   font-style: normal;
   font-display: swap;
 }
 
+/* 以下三行代码作用是将元素margin和padding设置为0，box-sizing设置为border-box，这样可以避免元素的内边距和边框影响元素的总宽度和高度。 */
 * {
   margin: 0;
   padding: 0;
@@ -15,11 +15,11 @@
 body {
   font-family:
     "HarmonyOS Sans Light", Roboto, "Helvetica Neue", Arial, sans-serif;
+  /* 设置字体的行高，字号，颜色及背景色 */
   line-height: 1.8;
   font-weight: 300;
   color: #1f2937;
   background: #f5f7fa;
-  /* text-align: center; */
 }
 
 header {
@@ -27,18 +27,18 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* 这里三个参数，对应上边距，左右边距，下边距，1rem=16px */
   padding: 1.3rem 1rem 1.1rem;
   background: linear-gradient(180deg, #2c3e50 0%, #233548 100%);
   color: white;
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 0 rgba(255, 255, 255, 0.04),
     0 4px 12px rgba(15, 23, 42, 0.12);
 }
-
+/* 设置：标题字母间距等 */
 header h1 {
-  color: white;
-  font-size: 1.45rem;
-  margin: 0 0 0.45rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.08em;
   font-weight: 500;
 }
@@ -50,23 +50,20 @@ header h1 {
   gap: 2.2rem;
   justify-content: center;
   align-items: center;
-  color: white;
-  text-decoration: none;
-  font-size: 0.92rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
-/* 将链接的文字颜色设置为白色代码如下：  */
+/* 将链接的文字颜色设置为白色，并去除下划线！ 同时应用过渡效果，当鼠标悬停时，文字颜色和背景颜色会改变，同时背景颜色会变淡！  */
 .nav-links a {
   color: white;
   text-decoration: none;
   transition:
     color 0.2s ease,
     opacity 0.2s ease;
-  opacity: 0.96;
   position: relative;
 }
-
+/* 这里是下划线的样式，当鼠标悬停时，下划线会变宽！  */
 .nav-links a::after {
   content: "";
   position: absolute;
@@ -82,77 +79,52 @@ header h1 {
 
 .nav-links a:hover {
   color: #7ec8ff;
-  opacity: 1;
 }
 
 .nav-links a:hover::after {
-  transform: scaleX(1);
+  transform: scaleX(
+    1
+  ); /* 该行代码作用是将下划线的宽度从0扩展到100%，上限超100% */
 }
-
+/* 设置：main的宽度，左右内边距，底部内边距，背景颜色，阴影效果！ 800px比较适合文字宽度，1000px比较适合项目列表！  */
 main {
   max-width: 800px;
   margin: 2.2rem auto;
   padding: 0 1.5rem;
 }
 
-.intro {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 2rem;
-  border: 1px solid rgba(44, 62, 80, 0.08);
-  border-radius: 12px;
-  margin-bottom: 2rem;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
-}
-
-.intro h1 {
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-  color: #1f2937;
-}
-
-.intro p {
-  color: #4b5563;
-}
-
-.section-title {
-  font-size: 1.5rem;
-  color: #2c3e50;
-  margin-bottom: 1rem;
-}
-
 .post-list {
   list-style: none;
 }
-
+/* 制作卡片静态样式+过渡效果 */
 .post-item {
   background: rgba(255, 255, 255, 0.9);
   padding: 1.5rem 2rem;
+  margin-top: 1rem;
   margin-bottom: 1rem;
   border: 1px solid rgba(44, 62, 80, 0.08);
   border-radius: 12px;
-  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  box-shadow: 0px 2px 2px rgba(15, 23, 42, 0.03);
   transition:
     box-shadow 0.2s ease,
     transform 0.2s ease;
 }
-
+/* 卡片悬停样式 */
 .post-item:hover {
   box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
   transform: translateY(-1px);
 }
 
-.post-item h2 {
-  font-size: 1.28rem;
-  margin-bottom: 0.3rem;
-}
-
-.post-item h2 a {
+.post-item a {
   text-decoration: none;
-  color: #1f2937;
+  color: #5e9df5;
 }
-
-.post-item h2 a:hover {
-  color: #2a6fb8;
+/* 实现次级ul的缩进 */
+.post-item ul {
+  padding-left: 2rem;
+}
+.post-item a:hover {
+  color: #7aa2cd;
 }
 
 .post-meta {
@@ -163,7 +135,7 @@ main {
 
 .post-excerpt {
   color: #555;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .post-tag {
@@ -180,10 +152,11 @@ main {
 footer {
   text-align: center;
   padding: 2rem;
-  color: #6b7280;
+  color: #999;
   font-size: 0.85rem;
+  /* 底部边框，颜色为灰色，宽度为1px，上边距为1px，背景颜色为浅灰色！  */
   border-top: 1px solid rgba(44, 62, 80, 0.08);
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 footer a {
@@ -191,14 +164,33 @@ footer a {
   text-decoration: none;
 }
 
+#about {
+  background-color: hsl(25, 100%, 50%);
+  color: #fff;
+}
+/* 设置图片 */
+#notes .img-gallery img {
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  height: auto;
+  border-radius: 8px;
+  margin-top:auto;
+  margin-bottom: 1rem;
+}
+
+#notes .img-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 2rem;
+}
+
+/* 以下代码是响应式设计，当视口宽度小于600px时，导航链接会垂直排列，间距为0.5rem，标题的字号变小，项目标题的字号变小，卡片的内边距变小！  */
 @media (max-width: 600px) {
-  header nav {
+  header .nav-links {
     flex-direction: column;
     gap: 0.5rem;
-  }
-
-  .intro h1 {
-    font-size: 1.4rem;
   }
 
   .section-title {
@@ -211,10 +203,3 @@ footer a {
 }
 
 /* vp是单位，表示视口宽度的百分比，目的是实现自动调整显示区域。 例如100vp表示视口宽度的100%; rem是相对单位，1rem等于16px；  */
-.reserved-section {
-  min-height: 100vh;
-  padding: 2rem;
-  margin: 4rem 5rem;
-  background: #c8ebf3;
-  border-radius: 8px;
-}
