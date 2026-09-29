@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>0929</title>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body>
+    <header class="site-header">
+      <h1>Web Dev Notes</h1>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="../index.html#notes">笔记</a>
+        <a href="../index.html#projects">项目</a>
+      </nav>
+    </header>
+
+    <main class="site-main">
+      <h2>260929：Grid vs Flex</h2>
+      <span class="post-tag">发布日期：2026-09-29</span>
+
+      <article class="post-item">
+        <p>
+          Grid vs Flex：Grid布局和Flex布局的区别。 前两天刚接触到Grid,
+          Flex，两个概念涉及到的内容多且庞杂，所以请AI帮忙制作两份可视化demo,只要选择相应的参数和属性，即可看到页面布局的实时变化，方便理解:
+          <a href="0929_flexbox-demo.html" target="_blank">点我查看Flex Demo</a>
+          <span> VS </span>
+          <a href="0929_grid-demo.html" target="_blank">点我查看Grid Demo</a>
+        </p>
+
+        <h3>Grid和Flex怎么选</h3>
+        <!-- 表格对比 -->
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>功能</th>
+              <th>更适合Flex</th>
+              <th>更适合Grid</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>布局方向</td>
+              <td>单方向：一行或一列</td>
+              <td>两个方向：行和列一起规划</td>
+            </tr>
+            <tr>
+              <td>元素尺寸</td>
+              <td>元素按内容自然伸缩、分配空间</td>
+              <td>二元素需要对齐到统一的行列轨道</td>
+            </tr>
+            <tr>
+              <td>常见场景</td>
+              <td>导航栏、按钮组、标题与操作按钮、垂直内容组</td>
+              <td>图片画廊、卡片墙、仪表板、整体页面分区</td>
+            </tr>
+            <tr>
+              <td>排列重点</td>
+              <td>内容顺序和剩余空间分配</td>
+              <td>网格轨道、行列对齐和区域位置</td>
+            </tr>
+          </tbody>
+        </table>
+        <h3>快速判断标准</h3>
+        <ul>
+          <li>只是让几个元素横向或纵向排列，并控制间距：用 Flex。</li>
+          <li>希望元素排成整齐的多行多列，并让列或行彼此对齐：用 Grid。</li>
+          <li>
+            页面有明确的二维结构，比如左侧栏加右侧内容，再配合多行卡片：优先考虑
+            Grid。
+          </li>
+          <li>不要为了“看起来高级”而选 Grid；简单的一排导航用 Flex 更直接。</li>
+          <li>两者可以组合：例如页面整体用 Grid，卡片内部再用 Flex。</li>
+        </ul>
+        <p>记忆方法：Flex 管一条线，Grid 管一张表。</p>
+
+        <div class="img-gallery">
+          <img />
+          <img />
+        </div>
+      </article>
+      <section class="post-item" id="about">
+        <h3>你好，我是司二胜</h3>
+        <p>
+          <strong>
+            Web全栈开发新人，有一个可爱的4岁的儿子，42岁转行。这里记录学习笔记、踩坑经历和项目日志。以Build
+            in Public为理念，力争从零开始，打造属于自己的Web开发之路。
+          </strong>
+        </p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        &copy; 2026 Frankfur | All Rights Reserved. <br />
+        Built with HTML & CSS |
+        <a href="https://github.com/Frankfur" target="_blank">GitHub</a>
+      </p>
+    </footer>
+  </body>
+</html>

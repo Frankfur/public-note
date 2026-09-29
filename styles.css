@@ -210,6 +210,49 @@ footer a {
   text-decoration: none;
 }
 
+/* 表单设置 */
+.comparison-table {
+  width: 100%; /* 表格基础样式 */
+  max-width: 900px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.comparison-table thead {
+  background-color: var(--color-page); /* 表头样式统一设置 */
+}
+
+.comparison-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.comparison-table td {
+  padding: 12px 16px; /* 表格单元格样式 */
+  border: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.comparison-table tbody tr:nth-child(even) {
+  background-color: var(--color-page); /* 交替行背景色 */
+}
+
+.comparison-table tbody tr:hover {
+  background-color: var(--color-muted); /* 鼠标悬停效果 */
+}
+
+.comparison-table td:first-child {
+  font-weight: 500; /* 第一列（判断点）加粗 */
+  color: var(--color-text);
+  white-space: nowrap; /* 防止第一列内容换行 */
+}
+
 /* 9. @media 响应式规则 */
 @media (max-width: 600px) {
   header .nav-links {
@@ -227,5 +270,14 @@ footer a {
   }
   .img-gallery {
     grid-template-columns: 1fr;
+  }
+
+  .comparison-table {
+    font-size: 0.85rem; /* 针对表彰，管理表格字体大小 */
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 8px 12px; /* 针对表单，管理表格单元格样式 */
   }
 }

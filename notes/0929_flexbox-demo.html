@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flexbox 图纸台</title>
+<style>
+  :root{
+    --bg: #0F1B2D;
+    --panel: #16283F;
+    --panel-2: #1D3350;
+    --line: #2A4666;
+    --cyan: #5EEAD4;
+    --amber: #F5A623;
+    --text: #E8EEF5;
+    --muted: #7C93AD;
+    --box: #223E5C;
+    --box-active: #274766;
+    --code-bg: #0B1622;
+    --font-head: "Avenir Next", "Segoe UI", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "SFMono-Regular", "JetBrains Mono", Menlo, Consolas, "Liberation Mono", "Courier New", monospace;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin:0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-head);
+    background-image:
+      linear-gradient(rgba(94,234,212,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(94,234,212,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  code{
+    font-family: var(--font-mono);
+    color: var(--amber);
+    font-size: 0.92em;
+  }
+
+  .wrap{ max-width: 1040px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  header.hero{
+    padding-bottom: 40px;
+    border-bottom: 1px dashed var(--line);
+    margin-bottom: 48px;
+  }
+  .kicker{
+    font-family: var(--font-mono);
+    color: var(--cyan);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    margin: 0 0 14px;
+  }
+  h1{
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.15;
+    margin: 0 0 16px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .hero p{ color: var(--muted); font-size: 17px; line-height: 1.65; max-width: 60ch; margin: 0; }
+
+  section{ margin-bottom: 56px; }
+  .section-title{ display:flex; align-items: baseline; gap: 12px; margin-bottom: 8px; }
+  .section-title h2{ font-size: 22px; margin: 0; font-weight: 600; }
+  .section-title .idx{ font-family: var(--font-mono); color: var(--amber); font-size: 14px; }
+  .section-desc{ color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 68ch; margin: 0 0 24px; }
+
+  .panel{
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .controls{ padding: 20px 22px; display: grid; gap: 18px; border-bottom: 1px solid var(--line); }
+  .control-row{ display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+  .control-label{
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--cyan);
+    width: 150px;
+    flex-shrink: 0;
+  }
+
+  .btn-group{ display: flex; flex-wrap: wrap; gap: 6px; }
+  .btn-group button{
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    background: var(--box);
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 6px 11px;
+    cursor: pointer;
+    transition: background .12s ease, color .12s ease, border-color .12s ease;
+  }
+  .btn-group button:hover{ border-color: var(--cyan); color: var(--text); }
+  .btn-group button.active{
+    background: var(--cyan);
+    color: #0B1622;
+    border-color: var(--cyan);
+    font-weight: 600;
+  }
+
+  .slider-row{ display: flex; align-items: center; gap: 12px; flex: 1; min-width: 180px; max-width: 360px; }
+  input[type="range"]{ flex: 1; accent-color: var(--cyan); }
+  .slider-val{ font-family: var(--font-mono); font-size: 12.5px; color: var(--amber); width: 48px; text-align: right; }
+
+  .stage-wrap{ padding: 24px; }
+  .stage{
+    background: var(--bg);
+    border: 1px dashed var(--line);
+    border-radius: 8px;
+    min-height: 220px;
+    padding: 16px;
+    display: flex;
+  }
+
+  .flex-item{
+    background: var(--box-active);
+    border: 1px solid var(--cyan);
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 10px 14px;
+    text-align: center;
+  }
+  .flex-item .n{ color: var(--amber); margin-right: 4px; }
+
+  .code-box{ background: var(--code-bg); padding: 18px 22px; overflow-x: auto; position: relative; }
+  pre{
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--cyan);
+    white-space: pre;
+  }
+  pre .prop{ color: var(--amber); }
+  pre .comment{ color: var(--muted); }
+
+  .copy-btn{
+    position: absolute;
+    top: 12px; right: 14px;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    background: var(--box);
+    color: var(--muted);
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    padding: 4px 9px;
+    cursor: pointer;
+  }
+  .copy-btn:hover{ color: var(--text); border-color: var(--cyan); }
+
+  .item-controls{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 14px;
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--line);
+  }
+  .item-card{ background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; }
+  .item-card h4{ margin: 0 0 12px; font-family: var(--font-mono); font-size: 13px; color: var(--text); }
+  .item-card .row{
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    margin-bottom: 10px; font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  }
+  .item-card .row:last-child{ margin-bottom: 0; }
+  .item-card input[type="range"]{ width: 100px; flex: none; }
+  .item-card .slider-val{ width: 44px; }
+
+  .cheat-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+  .cheat-card{ background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+  .cheat-card h3{
+    font-family: var(--font-mono); font-size: 14px; color: var(--cyan);
+    margin: 0 0 12px; padding-bottom: 10px; border-bottom: 1px dashed var(--line);
+  }
+  .cheat-card dl{ margin: 0; }
+  .cheat-card dt{ font-family: var(--font-mono); font-size: 12.5px; color: var(--amber); }
+  .cheat-card dd{ margin: 4px 0 0; font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+
+  footer{
+    margin-top: 64px; padding-top: 24px; border-top: 1px dashed var(--line);
+    color: var(--muted); font-size: 13px; font-family: var(--font-mono);
+  }
+
+  @media (max-width: 600px){
+    .control-label{ width: 100%; }
+    .wrap{ padding: 32px 16px 64px; }
+    .stage{ flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <p class="kicker">// CSS FLEXBOX — 交互图纸台</p>
+    <h1>点一点按钮，<br>看 Flexbox 到底在干什么</h1>
+    <p>Flexbox 只做一件事：把一排盒子排好。容器决定排列方式，子项决定自己占多少空间。下面两组演示分别对应容器属性和子项属性，调整参数后代码会实时同步。</p>
+  </header>
+
+  <!-- ================= 01 容器属性 ================= -->
+  <section>
+    <div class="section-title">
+      <span class="idx">01</span>
+      <h2>容器属性 · display: flex 之后</h2>
+    </div>
+    <p class="section-desc">这些属性写在父容器（<code>display: flex</code> 的元素）上，控制子项的排列方向、换行和对齐方式。</p>
+
+    <div class="panel">
+      <div class="controls">
+
+        <div class="control-row">
+          <span class="control-label">flex-direction</span>
+          <div class="btn-group" id="g-dir">
+            <button data-val="row" class="active">row</button>
+            <button data-val="row-reverse">row-reverse</button>
+            <button data-val="column">column</button>
+            <button data-val="column-reverse">column-reverse</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <span class="control-label">flex-wrap</span>
+          <div class="btn-group" id="g-wrap">
+            <button data-val="nowrap" class="active">nowrap</button>
+            <button data-val="wrap">wrap</button>
+            <button data-val="wrap-reverse">wrap-reverse</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <span class="control-label">justify-content</span>
+          <div class="btn-group" id="g-jc">
+            <button data-val="flex-start" class="active">flex-start</button>
+            <button data-val="center">center</button>
+            <button data-val="flex-end">flex-end</button>
+            <button data-val="space-between">space-between</button>
+            <button data-val="space-around">space-around</button>
+            <button data-val="space-evenly">space-evenly</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <span class="control-label">align-items</span>
+          <div class="btn-group" id="g-ai">
+            <button data-val="stretch" class="active">stretch</button>
+            <button data-val="flex-start">flex-start</button>
+            <button data-val="center">center</button>
+            <button data-val="flex-end">flex-end</button>
+            <button data-val="baseline">baseline</button>
+          </div>
+        </div>
+
+        <div class="control-row">
+          <span class="control-label">gap</span>
+          <div class="slider-row">
+            <input type="range" id="gapSlider" min="0" max="40" value="10">
+            <span class="slider-val" id="gapVal">10px</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="stage-wrap">
+        <div class="stage" id="stage1">
+          <div class="flex-item"><span class="n">1</span>A</div>
+          <div class="flex-item"><span class="n">2</span>B</div>
+          <div class="flex-item"><span class="n">3</span>C</div>
+          <div class="flex-item"><span class="n">4</span>D</div>
+          <div class="flex-item"><span class="n">5</span>E</div>
+        </div>
+      </div>
+
+      <div class="code-box">
+        <button class="copy-btn" data-copy="code1">复制</button>
+        <pre id="code1"></pre>
+      </div>
+    </div>
+    <p class="section-desc" style="margin-top:14px;">小提示：<code>justify-content</code> 沿主轴对齐，<code>align-items</code> 沿交叉轴对齐——切换到 <code>column</code> 后，两者的方向会互换。</p>
+  </section>
+
+  <!-- ================= 02 子项属性 ================= -->
+  <section>
+    <div class="section-title">
+      <span class="idx">02</span>
+      <h2>子项属性 · 每个盒子自己的脾气</h2>
+    </div>
+    <p class="section-desc">这些属性写在子项自己身上：谁抢空间抢得多（grow），空间不够谁先缩（shrink），起始大小是多少（basis）。三个盒子放在同一个 <code>flex-direction: row</code> 容器里对比。</p>
+
+    <div class="panel">
+      <div class="item-controls" id="itemControls"></div>
+
+      <div class="stage-wrap">
+        <div class="stage" id="stage2"></div>
+      </div>
+
+      <div class="code-box">
+        <button class="copy-btn" data-copy="code2">复制</button>
+        <pre id="code2"></pre>
+      </div>
+    </div>
+    <p class="section-desc" style="margin-top:14px;">小提示：把三个盒子的 <code>flex-basis</code> 都拉到 300px，容器装不下，就会触发 <code>flex-shrink</code> 压缩——把某个盒子的 shrink 设为 0，它就不会被压扁。</p>
+  </section>
+
+  <!-- ================= 03 速查 ================= -->
+  <section>
+    <div class="section-title">
+      <span class="idx">03</span>
+      <h2>速查表</h2>
+    </div>
+    <p class="section-desc">忘了某个属性干什么的时候回来看一眼。</p>
+
+    <div class="cheat-grid">
+      <div class="cheat-card">
+        <h3>容器 · justify-content</h3>
+        <dl><dt>主轴对齐方式</dt><dd>控制子项在排列方向（主轴）上的分布，比如水平居中、两端对齐。</dd></dl>
+      </div>
+      <div class="cheat-card">
+        <h3>容器 · align-items</h3>
+        <dl><dt>交叉轴对齐方式</dt><dd>控制子项在垂直于排列方向（交叉轴）上的对齐，比如让高矮不一的盒子顶部对齐。</dd></dl>
+      </div>
+      <div class="cheat-card">
+        <h3>容器 · flex-wrap</h3>
+        <dl><dt>是否换行</dt><dd>默认 <code>nowrap</code> 会把所有子项挤在一行；设为 <code>wrap</code> 后放不下的子项会折到下一行。</dd></dl>
+      </div>
+      <div class="cheat-card">
+        <h3>子项 · flex-grow</h3>
+        <dl><dt>剩余空间怎么分</dt><dd>容器有多余空间时，按这个数值的比例分配给各个子项，0 表示不参与分配。</dd></dl>
+      </div>
+      <div class="cheat-card">
+        <h3>子项 · flex-shrink</h3>
+        <dl><dt>空间不够时谁先缩</dt><dd>容器装不下所有子项时，按这个数值的比例压缩各子项的尺寸，0 表示不缩小。</dd></dl>
+      </div>
+      <div class="cheat-card">
+        <h3>子项 · flex-basis</h3>
+        <dl><dt>分配空间前的起始尺寸</dt><dd>在 grow / shrink 生效之前，子项本来的大小，类似 <code>width</code>，但只在主轴方向起作用。</dd></dl>
+      </div>
+      <div class="cheat-card">
+        <h3>三合一 · flex</h3>
+        <dl><dt>flex: grow shrink basis</dt><dd>日常常简写成 <code>flex: 1</code>，等价于 <code>flex: 1 1 0%</code>。</dd></dl>
+      </div>
+    </div>
+  </section>
+
+  <footer>本页为单文件，无外部依赖，可离线在任意现代浏览器中打开。</footer>
+</div>
+
+<script>
+(function(){
+  function P(name, val){ return '  <span class="prop">' + name + '</span>: ' + val + ';\n'; }
+
+  function bindGroup(id, cb){
+    var g = document.getElementById(id);
+    g.addEventListener('click', function(e){
+      var b = e.target.closest('button');
+      if(!b) return;
+      g.querySelectorAll('button').forEach(function(x){ x.classList.remove('active'); });
+      b.classList.add('active');
+      cb(b.getAttribute('data-val'));
+    });
+  }
+
+  /* ---------- 复制按钮 ---------- */
+  document.querySelectorAll('.copy-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var text = document.getElementById(btn.getAttribute('data-copy')).textContent;
+      function done(){ var old = btn.textContent; btn.textContent = '已复制'; setTimeout(function(){ btn.textContent = old; }, 1200); }
+      function fallback(){
+        var ta = document.createElement('textarea');
+        ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try{ document.execCommand('copy'); done(); }catch(e){}
+        document.body.removeChild(ta);
+      }
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else { fallback(); }
+    });
+  });
+
+  /* ================= 01 容器 ================= */
+  var stage1 = document.getElementById('stage1');
+  var s1 = { dir:'row', wrap:'nowrap', jc:'flex-start', ai:'stretch', gap:10 };
+
+  function render1(){
+    stage1.style.flexDirection = s1.dir;
+    stage1.style.flexWrap = s1.wrap;
+    stage1.style.justifyContent = s1.jc;
+    stage1.style.alignItems = s1.ai;
+    stage1.style.gap = s1.gap + 'px';
+
+    var code = '<span class="comment">.container {</span>\n  display: flex;\n';
+    code += P('flex-direction', s1.dir) + P('flex-wrap', s1.wrap);
+    code += P('justify-content', s1.jc) + P('align-items', s1.ai);
+    code += P('gap', s1.gap + 'px');
+    code += '<span class="comment">}</span>';
+    document.getElementById('code1').innerHTML = code;
+  }
+
+  bindGroup('g-dir',  function(v){ s1.dir = v;  render1(); });
+  bindGroup('g-wrap', function(v){ s1.wrap = v; render1(); });
+  bindGroup('g-jc',   function(v){ s1.jc = v;   render1(); });
+  bindGroup('g-ai',   function(v){ s1.ai = v;   render1(); });
+
+  document.getElementById('gapSlider').addEventListener('input', function(){
+    s1.gap = parseInt(this.value, 10);
+    document.getElementById('gapVal').textContent = s1.gap + 'px';
+    render1();
+  });
+  render1();
+
+  /* ================= 02 子项 ================= */
+  var stage2 = document.getElementById('stage2');
+  stage2.style.flexDirection = 'row';
+  stage2.style.gap = '10px';
+
+  var items = [
+    { grow: 1, shrink: 1, basis: 100 },
+    { grow: 1, shrink: 1, basis: 100 },
+    { grow: 1, shrink: 1, basis: 100 }
+  ];
+  var boxes = [];
+  var ctrlWrap = document.getElementById('itemControls');
+
+  items.forEach(function(it, i){
+    var box = document.createElement('div');
+    box.className = 'flex-item';
+    stage2.appendChild(box);
+    boxes.push(box);
+
+    var card = document.createElement('div');
+    card.className = 'item-card';
+    card.innerHTML =
+      '<h4>Item ' + (i+1) + '</h4>' +
+      '<div class="row"><span>flex-grow</span><input type="range" min="0" max="5" value="' + it.grow + '" data-i="' + i + '" data-k="grow"><span class="slider-val" data-v="' + i + '-grow">' + it.grow + '</span></div>' +
+      '<div class="row"><span>flex-shrink</span><input type="range" min="0" max="5" value="' + it.shrink + '" data-i="' + i + '" data-k="shrink"><span class="slider-val" data-v="' + i + '-shrink">' + it.shrink + '</span></div>' +
+      '<div class="row"><span>flex-basis</span><input type="range" min="0" max="400" step="10" value="' + it.basis + '" data-i="' + i + '" data-k="basis"><span class="slider-val" data-v="' + i + '-basis">' + it.basis + 'px</span></div>';
+    ctrlWrap.appendChild(card);
+  });
+
+  ctrlWrap.addEventListener('input', function(e){
+    var t = e.target;
+    if(t.tagName !== 'INPUT') return;
+    var i = parseInt(t.getAttribute('data-i'), 10);
+    var k = t.getAttribute('data-k');
+    var v = parseInt(t.value, 10);
+    items[i][k] = v;
+    ctrlWrap.querySelector('[data-v="' + i + '-' + k + '"]').textContent = (k === 'basis') ? v + 'px' : v;
+    render2();
+  });
+
+  function render2(){
+    items.forEach(function(it, i){
+      var b = boxes[i];
+      b.style.flexGrow = it.grow;
+      b.style.flexShrink = it.shrink;
+      b.style.flexBasis = it.basis + 'px';
+      b.innerHTML = '<span><span class="n">' + (i+1) + '</span>g' + it.grow + ' s' + it.shrink + ' b' + it.basis + '</span>';
+    });
+
+    var code = '<span class="comment">.container {</span>\n  display: flex;\n' + P('gap', '10px') + '<span class="comment">}</span>\n';
+    items.forEach(function(it, i){
+      code += '\n<span class="comment">.item-' + (i+1) + ' {</span>\n';
+      code += P('flex-grow', it.grow) + P('flex-shrink', it.shrink) + P('flex-basis', it.basis + 'px');
+      code += '<span class="comment">}</span>\n';
+    });
+    document.getElementById('code2').innerHTML = code;
+  }
+  render2();
+})();
+</script>
+</body>
+</html>
