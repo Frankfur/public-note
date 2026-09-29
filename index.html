@@ -9,15 +9,16 @@
 
   <body>
     <!-- 更多头部内容可以添加到这里 例如：logo、导航栏等  -->
-    <header>
+    <header class="site-header">
       <h1>Web Dev Notes</h1>
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="主导航">
         <a href="#notes">笔记</a>
         <a href="#projects">项目</a>
-      </div>
+        <a href="aboutme.html" target="_blank">关于</a>
+      </nav>
     </header>
 
-    <main>
+    <main class="site-main">
       <!-- notes section:  用于展示笔记列表 例如：笔记标题、笔记摘要、笔记标签等 -->
 
       <section id="notes">
@@ -26,7 +27,6 @@
           <li class="post-item">
             <a href="notes/260928.html" class="post-title" target="_blank">
               2026年9月28日笔记：开始build in public
-              <!-- TODO: 链接文字style以修改颜色和下划线 -->
             </a>
             <p class="post-excerpt">
               开始创建最简单的 build in public
@@ -75,11 +75,16 @@
       </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>
-        &copy; 2026 Frankfurt | All Rights Reserved. <br />
+        &copy; 2026 Frankfur | All Rights Reserved. <br />
         Built with HTML & CSS |
-        <a href="https://github.com/Frankfur" target="_blank">GitHub</a>
+        <a
+          href="https://github.com/Frankfur"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
       </p>
     </footer>
     <!-- 如果有script.js文件，可以在这里引入.即body行  -->

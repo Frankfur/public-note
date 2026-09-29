@@ -3,27 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boilerplate</title>
+    <title>Template</title>
     <link rel="stylesheet" href="../styles.css" />
   </head>
 
   <body>
-    <header>
+    <header class="site-header">
       <h1>Web Dev Notes</h1>
-      <div class="nav-links">
+      <nav class="nav-links" aria-label="主导航">
         <a href="../index.html#notes">笔记</a>
         <a href="../index.html#projects">项目</a>
-      </div>
+      </nav>
     </header>
 
-    <main>
-      <article class="post-item">
-        <h2>日期抬头：做了什么</h2>
-        <p>记录具体的学习内容；</p>
-      </article>
+    <main class="site-main">
+      <h2>260928 笔记：开始 build in public</h2>
+      <span class="post-tag">发布日期：2026-09-28</span>
 
+      <article class="post-item">
+        <p>记录具体的学习内容；</p>
+        <div class="img-gallery">
+          <img />
+          <img />
+        </div>
+      </article>
       <section class="post-item" id="about">
-        <h4>你好，我是司二胜</h4>
+        <h3>你好，我是司二胜</h3>
         <p>
           Web全栈开发新人，有一个可爱的4岁的儿子，42岁转行。这里记录学习笔记、踩坑经历和项目日志。以Build
           in Public为理念，力争从零开始，打造属于自己的Web开发之路。
@@ -31,9 +36,9 @@
       </section>
     </main>
 
-    <footer>
+    <footer class="site-footer">
       <p>
-        &copy; 2026 Frankfurt | All Rights Reserved. <br />
+        &copy; 2026 Frankfur | All Rights Reserved. <br />
         Built with HTML & CSS |
         <a href="https://github.com/Frankfur" target="_blank">GitHub</a>
       </p>
