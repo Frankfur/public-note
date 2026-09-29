@@ -175,6 +175,11 @@ body main article ul {
   margin-right: 0.5rem;
 }
 
+.post-division {
+  border-top: 2px solid var(--color-border);
+  padding-top: 1rem;
+}
+
 #about {
   background-color: var(--color-surface);
   color: var(--color-text);
@@ -210,6 +215,51 @@ footer a {
   text-decoration: none;
 }
 
+/* 9. 设置表格基础样式 */
+.comparison-table {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.comparison-table thead {
+  background-color: var(--color-surface); /* 表头样式 */
+}
+
+.comparison-table th {
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.comparison-table td {
+  padding: 12px 16px; /* 表格单元格样式 */
+  border: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.comparison-table tbody tr:nth-child(even) {
+  background-color: var(--color-surface); /* 交替行背景色 */
+}
+
+.comparison-table tbody tr:hover {
+  background-color: var(--color-border); /* 鼠标悬停效果 */
+}
+
+.comparison-table td:first-child {
+  font-weight: 500; /* 第一列（判断点）加粗 */
+  color: var(--color-text);
+  white-space: nowrap;
+}
+
 /* 9. @media 响应式规则 */
 @media (max-width: 600px) {
   header .nav-links {
@@ -227,5 +277,16 @@ footer a {
   }
   .img-gallery {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .comparison-table {
+    font-size: 0.85rem;
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 8px 12px;
   }
 }
