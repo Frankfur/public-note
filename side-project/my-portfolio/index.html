@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" fetchpriority="high" />
+    <title>My Portfolio</title>
+    <!-- description标签作用：描述网站的内容，用于搜索引擎优化（SEO）和网站访问者理解网站内容。20260920 -->
+    <meta
+      name="description"
+      content="Frank Si 的个人作品集网站，展示全栈开发学习项目，涵盖 HTML/CSS/JavaScript 实战与 Git 协作实践"
+    />
+  </head>
+
+  <body>
+    <header>
+      <!-- header区域作用：顶部 导航栏，包含logo和导航链接。相当于招牌，用于展示网站名称和导航链接。 -->
+      <nav>
+        <!-- nav区域作用：导航栏，包含导航链接。 -->
+        <div class="logo">My Portfolio</div>
+        <ul>
+          <!-- ul区域作用：导航链接列表，包含导航链接。 -->
+          <li><a href="#home">Home</a></li>
+          <!-- #home: 寻找并跳转到home section，即id 为home的标签区域 -->
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section id="home">
+        <h1>Hello, I'm Frank Si.</h1>
+        <p>
+          I am learning full-stack web development. I started this journey with
+          a curiosity about how websites work and now I'm building my own
+          projects step by step.
+        </p>
+      </section>
+
+      <!-- for following projects section
+        1. add id in div: project-container;
+        2. remove the content for 3 project cards; 
+        3. use JS codes to dynamically generate project cards; -->
+      <section id="projects">
+        <h2>My Projects</h2>
+        <div class="project-grid" id="project-container">
+          <!-- 测试图片 lazy loading 功能， 2026-09-20 11:44:11 -->
+          <!-- 为什么这行代码不是以/>结尾的？因为这是一个div元素，不需要闭合标签。但是<input>元素需要闭合标签,因为这是一个表单元素，需要用户输入内容。 -->
+          <!-- <article class="project-card"> 
+          <h3>Project 1</h3>
+          <p>This is a brief description of Project 1.</p >
+        </article>
+        <article class="project-card">
+          <h3>Project 2</h3>
+          <p>This is a brief description of Project 2.</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 3</h3>
+          <p>This is a brief description of Project 3.</p>
+        </article> -->
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+          <label for="name">Your Name</label>
+          <!-- label区域作用：表单标签，用于描述表单元素。 其中 for ="name" 表示将标签与输入框的id属性值关联起来。 -->
+          <input
+            type="text"
+            class="form-input"
+            id="name"
+            placeholder="Enter your name"
+            required
+          />
+
+          <label for="email">Your Email</label>
+          <input
+            type="email"
+            class="form-input"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label for="message">Your Message? or Question</label>
+          <textarea
+            class="form-input"
+            id="message"
+            placeholder="Any thoughts?"
+          ></textarea>
+
+          <label for="age">Age</label>
+          <input
+            type="number"
+            class="form-input"
+            id="age"
+            placeholder="Enter your age"
+            required
+          />
+          <button type="submit">Send</button>
+        </form>
+      </section>
+      <!-- 添加深色模式切换按钮 -->
+      <button id="theme-toggle">切换深色模式</button>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

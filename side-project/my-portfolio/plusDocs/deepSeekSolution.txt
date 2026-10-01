@@ -1,0 +1,717 @@
+好的，收到！以下是根据你的要求（PM视角 + 四步教学法 + 每日晨会）和 Claude 方案的颗粒度（Day-by-Day + 代码示例 + 评估体系）**深度融合优化后**的完整版 SOP。
+
+这份文档将严格遵循你提出的 **“演示 → 知识点与PM解读 → 独立项目 → 点评”** 四步法，并覆盖从第1天到第70天的完整学习路径。你可以直接将以下内容复制到 Word 中保存。
+
+---
+
+# 📚 Web全栈14周Project-Based SOP（优化整合版）
+
+> **适用对象**：零基础小白 | **学习模式**：Project-Based + Guided Practice | **每日强度**：6小时 | **总时长**：14周（70天）
+>
+> **核心原则**：技术为骨，产品为魂。从第一行代码起，拥抱Git版本控制。
+
+---
+
+## 一、学习框架与每日节奏
+
+### 1.1 十四周阶段概览
+
+```
+第1阶段（Week 1-2）前端基础三件套 + Git
+目标：能独立制作具有交互性的响应式静态页面
+
+第2阶段（Week 3-6）React + TypeScript + 前端工程化
+目标：掌握组件化开发，能独立完成SPA应用
+
+第3阶段（Week 7-10）Node.js + Express + 数据库
+目标：会搭建RESTful API，理解全栈架构
+
+第4阶段（Week 11-14）DevOps + 综合实战
+目标：会容器化部署，完成全栈综合项目
+```
+
+### 1.2 每日标准时间线
+
+| 时间段 | 内容 | 说明 |
+|:---|:---|:---|
+| 09:45 - 10:00 | **晨间回顾会（Daily Standup）** | 复盘昨日概念（中英对照）+ 预告今日任务 |
+| 10:00 - 12:00 | **Guided Practice（演示 + 跟做）** | 讲师完整演示项目，学生边看边敲 |
+| 12:00 - 14:00 | 午休 | — |
+| 14:00 - 15:30 | **概念拆解 + PM视角分析** | 深度讲解技术点，从“为什么”角度解读 |
+| 15:30 - 17:00 | **学生独立实践** | 学生基于Demo制作变体项目 |
+| 17:00 - 18:00 | **Code Review + 次日预告** | 讲师点评代码，预告明天内容 |
+
+### 1.3 四步教学法（每个新项目标准流程）
+
+| 步骤 | 名称 | 内容 |
+|:---:|:---|:---|
+| 1 | **Demonstration（演示）** | 讲师全流程展示项目从0到1，学生跟做并记录 |
+| 2 | **Concept Breakdown（概念拆解）** | 提炼技术概念（中英对照），深度讲解原理 |
+| 3 | **PM Perspective（产品视角）** | 从用户价值、商业逻辑分析“为什么需要这个技术” |
+| 4 | **Independent Project（独立项目）** | 学生独立完成变体项目，讲师Code Review并点评 |
+
+---
+
+## 二、第一阶段详细规划（Week 1-2）：前端基础三件套
+
+### 🎯 阶段目标
+- ✅ 掌握 HTML5 语义化结构
+- ✅ 掌握 CSS3 Flexbox/Grid 布局与响应式
+- ✅ 掌握 JavaScript DOM 操作与异步编程（async/await）
+- ✅ 能用 Git 管理版本，规范提交
+
+---
+
+### 📅 Week 1：HTML5 + CSS3 + Git入门（第1周）
+
+#### Day 1 (Monday)：环境搭建、HTML骨架与Git启蒙
+
+**晨会（09:45-10:00）**
+| 概念（中） | 概念（英） | 释义 |
+|:---|:---|:---|
+| 超文本标记语言 | HTML | 网页的结构和骨架 |
+| 标签 | Tag | 用尖括号包裹的元素名，如 `<h1>` |
+| 属性 | Attribute | 标签的额外配置，如 `id="app"` |
+| 仓库 | Repository | 存储代码历史记录的地方（GitHub） |
+
+**Guided Practice（10:00-12:00）**
+- **项目**：个人作品集网站 - 首页框架
+- **目标**：搭建语义化的HTML结构
+- **演示步骤**（讲师）：
+  ```bash
+  # 1. 创建项目并初始化Git
+  mkdir my-portfolio && cd my-portfolio
+  git init
+  
+  # 2. 创建HTML文件
+  touch index.html
+  ```
+  ```html
+  <!-- index.html 骨架 -->
+  <!DOCTYPE html>
+  <html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的作品集</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">LOGO</div>
+        <ul>
+          <li><a href="#home">首页</a></li>
+          <li><a href="#projects">项目</a></li>
+          <li><a href="#contact">联系</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="home"><h1>欢迎来到我的作品集</h1></section>
+      <section id="projects"><h2>我的项目</h2></section>
+      <section id="contact">
+        <h2>联系我</h2>
+        <form>
+          <input type="text" placeholder="姓名" />
+          <input type="email" placeholder="邮箱" />
+          <button type="submit">发送</button>
+        </form>
+      </section>
+    </main>
+    <footer><p>&copy; 2025 我的作品集</p></footer>
+  </body>
+  </html>
+  ```
+  ```bash
+  # 3. 第一次Git提交
+  git add index.html
+  git commit -m "feat: 初始化作品集HTML骨架"
+  
+  # 4. 关联GitHub远程仓库
+  git remote add origin https://github.com/你的用户名/my-portfolio.git
+  git push -u origin main
+  ```
+
+**PM视角（14:00-15:30）**
+> **问题**：为什么要用语义化标签（`<header>`、`<nav>`、`<main>`）而不是全用 `<div>`？
+> **回答**：
+> 1. **SEO**：搜索引擎（如Google）能理解页面结构，知道哪里是导航、哪里是主要内容，从而提升搜索排名。
+> 2. **无障碍（A11Y）**：视障用户使用屏幕阅读器时，语义标签能帮助导航。
+> 3. **团队协作**：代码可读性更高，6个月后自己或同事都能快速理解。
+> **PM结论**：语义化不是“技术洁癖”，而是**提升产品曝光和用户覆盖的商业决策**。
+
+**学生独立项目（15:30-17:00）**
+- 在 `my-portfolio` 中新建 `about.html`，包含：`<header>`、`<main>`、`<article>`（个人简介）、`<aside>`（技能列表）、`<footer>`。
+- 提交Git：
+  ```bash
+  git checkout -b feature/about-page
+  git add about.html
+  git commit -m "feat: 添加关于我页面"
+  git push origin feature/about-page
+  ```
+
+**Code Review（17:00-18:00）**
+- 检查点：是否用了至少5种语义标签？Git提交信息是否规范（推荐 `feat:` / `fix:` / `docs:` 前缀）？
+
+---
+
+#### Day 2 (Tuesday)：CSS盒模型与Flexbox导航
+
+**晨会概念清单**
+| 概念（中） | 概念（英） | 释义 |
+|:---|:---|:---|
+| 层叠样式表 | CSS | 控制网页的样式和布局 |
+| 盒模型 | Box Model | 每个元素由 content + padding + border + margin 组成 |
+| 弹性盒子 | Flexbox | 一维布局模型，用于排成一行或一列 |
+| 选择器 | Selector | 选中要应用样式的元素，如 `.class`、`#id` |
+
+**Guided Practice**：制作响应式导航栏
+```css
+/* style.css */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+nav {
+  display: flex;
+  justify-content: space-between;  /* 两端对齐 */
+  align-items: center;             /* 垂直居中 */
+  padding: 1rem 2rem;
+  background: #333;
+  color: white;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;   /* 子元素间距 */
+  list-style: none;
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  nav { flex-direction: column; gap: 1rem; }
+  .nav-links { flex-direction: column; align-items: center; }
+}
+```
+
+**PM视角**
+> **问题**：移动端适配为什么重要？
+> **回答**：全球超60%的网页流量来自移动设备。如果导航在手机上显示不全或难以点击，你将直接流失大部分潜在用户。
+> **PM决策**：**Mobile-First（移动优先）** 设计策略——先设计手机版，再扩展到大屏，确保核心用户体验覆盖最大用户群。
+
+**独立项目**：将作品集的导航改为Flexbox布局，实现PC端水平、移动端垂直折叠的效果。Git commit：`"feat: 实现响应式Flexbox导航"`
+
+---
+
+#### Day 3 (Wednesday)：CSS Grid布局 + 卡片设计
+
+**晨会概念**
+| 概念（中） | 概念（英） | 释义 |
+|:---|:---|:---|
+| 网格布局 | Grid | 二维布局模型，同时控制行和列 |
+| 响应式设计 | Responsive Design | 适配不同屏幕尺寸 |
+| 媒体查询 | Media Query | `@media` 规则，按设备条件应用样式 |
+
+**Guided Practice**：作品展示网格（3列自适应）
+```css
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.project-card {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+```
+
+**PM视角**
+> **问题**：`auto-fit` + `minmax()` 解决了什么问题？
+> **回答**：传统开发要为手机、平板、PC写多套布局。Grid的自动填充让卡片**根据容器宽度自动折行**，确保在任何屏幕上都显示为整齐的网格。这极大降低了**维护成本**，让产品能快速适配新设备。
+
+**独立项目**：用Grid制作一个“团队成员展示区”（至少4张卡片，带头像、姓名、职位）。提交 `"feat: 添加Grid团队成员区"`。
+
+---
+
+#### Day 4-5 (Thursday-Friday)：CSS动画 + 独立项目冲刺
+
+**Day 4 上午**：CSS过渡与微交互
+```css
+/* 按钮悬停效果 */
+.btn {
+  background: #007bff;
+  transition: background 0.3s, transform 0.2s;
+}
+.btn:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+```
+
+**PM视角**
+> **问题**：微交互（Micro-interaction）有什么商业价值？
+> **回答**：平滑的悬停、点击反馈能让用户感觉产品“流畅”“高级”，提升**用户信任度**和**留存率**。这是投入产出比极高的体验优化。
+
+**Day 5 全天 - 学生独立项目（完整作品集）**
+- 要求：
+  1. 用HTML5语义化结构
+  2. 用Flexbox实现导航栏
+  3. 用Grid实现作品展示网格
+  4. 至少3处CSS过渡/动画
+  5. 响应式设计（手机+平板+桌面）
+  6. Git至少8次有意义提交
+- 交付物：GitHub仓库链接 + 部署到Vercel/Netlify（讲师指导部署）
+- **点评标准**：参见本文档末尾的评估体系。
+
+---
+
+### 📅 Week 2：JavaScript交互与异步编程
+
+#### Day 6 (Monday)：变量、数据类型与函数
+
+**晨会概念**
+| 概念（中） | 概念（英） | 释义 |
+|:---|:---|:---|
+| 变量 | Variable | 存储数据的容器 |
+| 数据类型 | Data Types | String, Number, Boolean, Array, Object |
+| 函数声明 | Function Declaration | `function fn() {}` |
+| 箭头函数 | Arrow Function | `() => {}`，更简洁 |
+
+**Guided Practice**：简易计算器
+```javascript
+// 获取DOM元素
+const num1 = document.getElementById('num1');
+const num2 = document.getElementById('num2');
+const addBtn = document.getElementById('addBtn');
+const resultDiv = document.getElementById('result');
+
+// 箭头函数
+const add = (a, b) => a + b;
+
+// 事件监听
+addBtn.addEventListener('click', () => {
+  const a = parseFloat(num1.value) || 0;
+  const b = parseFloat(num2.value) || 0;
+  resultDiv.textContent = `结果：${add(a, b)}`;
+});
+```
+
+**PM视角**
+> **问题**：为什么用 `parseFloat` 和 `|| 0`？
+> **回答**：用户输入永远是**不可靠的**。产品必须做好**防御性编程**——自动处理空输入和非法字符，避免出现 `NaN`（Not a Number）这种让用户困惑的错误。
+
+**独立项目**：改为减、乘、除，并增加“清空”按钮。Git `"feat: 实现四则运算计算器"`。
+
+---
+
+#### Day 7 (Tuesday)：DOM操作与事件深入
+
+**Guided Practice**：Todo List 核心逻辑
+```javascript
+const input = document.getElementById('todoInput');
+const addBtn = document.getElementById('addBtn');
+const list = document.getElementById('todoList');
+
+addBtn.addEventListener('click', () => {
+  const text = input.value.trim();
+  if (!text) return alert('请输入内容！');
+  
+  const li = document.createElement('li');
+  li.innerHTML = `
+    <span>${text}</span>
+    <button class="delete-btn">删除</button>
+  `;
+  
+  // 点击切换完成状态
+  li.querySelector('span').addEventListener('click', () => {
+    li.classList.toggle('done');
+  });
+  
+  // 删除功能
+  li.querySelector('.delete-btn').addEventListener('click', () => {
+    li.remove();
+  });
+  
+  list.appendChild(li);
+  input.value = '';
+});
+```
+
+**PM视角**
+> **问题**：为什么“删除”和“切换状态”要绑定在动态创建的元素上？
+> **回答**：这是**事件委托**思想。产品中列表项是动态生成的，必须确保新添加的项也具备完整的交互功能。
+
+**独立项目**：增加“统计”功能（总任务数 / 已完成数）。Git `"feat: 添加任务统计"`。
+
+---
+
+#### Day 8 (Wednesday)：异步编程（Async/Await + Fetch）
+
+**晨会概念**
+| 概念（中） | 概念（英） | 释义 |
+|:---|:---|:---|
+| 异步 | Asynchronous | 不阻塞后续代码执行，等结果回来再处理 |
+| 承诺 | Promise | 代表未来完成的异步操作 |
+| 异步函数 | Async Function | `async function` 声明 |
+| 等待 | Await | 等待Promise完成 |
+
+**Guided Practice**：从API获取名言并显示
+```javascript
+async function fetchQuote() {
+  const loading = document.getElementById('loading');
+  const quoteDiv = document.getElementById('quote');
+  
+  loading.style.display = 'block';
+  try {
+    const res = await fetch('https://api.quotable.io/random');
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+    const data = await res.json();
+    quoteDiv.textContent = `"${data.content}" —— ${data.author}`;
+  } catch (error) {
+    quoteDiv.textContent = '加载失败，请稍后重试';
+    console.error('Fetch error:', error);
+  } finally {
+    loading.style.display = 'none';
+  }
+}
+```
+
+**PM视角**
+> **问题**：为什么要有 `loading` 和 `catch`？
+> **回答**：
+> - **Loading**：用户等待时看到加载状态，知道“系统正在工作”，避免焦虑流失。
+> - **Error Handling**：网络不稳定是常态，产品必须优雅降级，而不是直接崩溃或白屏。
+> **PM金句**：**“好的产品，在出错时也不会让用户感到无助。”**
+
+**独立项目**：将作品集中的“名言挂件”改为从API加载天气信息（使用 `https://api.open-meteo.com/`）。Git `"feat: 接入天气API"`。
+
+---
+
+#### Day 9-10 (Thursday-Friday)：综合项目 + 点评
+
+**Day 9 - 学生独立项目**：互动问卷调查表
+- 要求：
+  1. 5个问题（单选/多选）
+  2. 表单验证（所有必填项不能为空）
+  3. 点击提交后计算得分并显示结果页面
+  4. 用 `async/await` 模拟提交到服务器（延迟1秒）
+  5. 使用Git分支开发（`feature/survey`）
+
+**Day 10 上午**：完成项目 + 晨间回顾（总结第1-2周所有概念）
+**Day 10 下午**：讲师逐一点评Code Review，学生根据反馈优化并发布最终版。
+
+---
+
+## 三、第二阶段详细规划（Week 3-6）：React + TypeScript
+
+### 🎯 阶段目标
+- ✅ 掌握 TypeScript 基础类型与接口
+- ✅ 掌握 React 函数组件、Props、Hooks（useState, useEffect）
+- ✅ 掌握 React Router 实现路由
+- ✅ 掌握状态管理（Context API / Zustand）
+
+---
+
+### 📅 Week 3-4：React入门 + Hooks
+
+#### Day 11 (Monday)：React环境搭建与第一个组件
+
+**晨会概念**
+| 概念（中） | 概念（英） | 释义 |
+|:---|:---|:---|
+| 组件 | Component | 独立可复用的UI模块 |
+| JSX | JSX | 在JavaScript中写类似HTML的语法 |
+| 属性 | Props | 父组件传给子组件的只读数据 |
+
+**Guided Practice**：使用 Vite 搭建 React + TypeScript 项目
+```bash
+npm create vite@latest my-react-app -- --template react-ts
+cd my-react-app
+npm install
+npm run dev
+```
+
+创建第一个组件 `Card.tsx`：
+```tsx
+interface CardProps {
+  title: string;
+  description: string;
+  imageUrl?: string;  // 可选属性
+}
+
+function Card({ title, description, imageUrl }: CardProps) {
+  return (
+    <div className="card">
+      {imageUrl && <img src={imageUrl} alt={title} />}
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  );
+}
+export default Card;
+```
+
+**PM视角**
+> **问题**：为什么用 TypeScript 的 `interface`？
+> **回答**：**契约大于配置**。明确每个组件需要什么数据（Props），类型错误在编译阶段就能被发现，避免运行时崩溃。这在大团队协作中能减少50%以上的低级Bug。
+
+**独立项目**：创建 `Button` 和 `Header` 组件，并在 `App.tsx` 中使用。Git `"feat: 创建基础组件库"`。
+
+---
+
+#### Day 12 (Tuesday)：State与Hooks
+
+**Guided Practice**：计数器 + 待办列表（React版）
+```tsx
+import { useState } from 'react';
+
+function TodoApp() {
+  const [todos, setTodos] = useState<{ id: number; text: string; done: boolean }[]>([]);
+  const [input, setInput] = useState('');
+
+  const addTodo = () => {
+    if (!input.trim()) return;
+    setTodos([...todos, { id: Date.now(), text: input, done: false }]);
+    setInput('');
+  };
+
+  const toggleTodo = (id: number) => {
+    setTodos(todos.map(t => t.id === id ? { ...t, done: !t.done } : t));
+  };
+
+  return (
+    <div>
+      <input value={input} onChange={(e) => setInput(e.target.value)} />
+      <button onClick={addTodo}>添加</button>
+      <ul>
+        {todos.map(t => (
+          <li key={t.id} onClick={() => toggleTodo(t.id)} style={{ textDecoration: t.done ? 'line-through' : 'none' }}>
+            {t.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+**PM视角**
+> **问题**：为什么用 `[...todos, newTodo]` 而不是 `todos.push(newTodo)`？
+> **回答**：**不可变数据（Immutable Data）**。直接修改数组不会触发React重新渲染。用展开运算符创建新数组，React才能检测到变化并更新UI。这是React的**核心设计哲学**。
+
+---
+
+#### Day 13-14 (Wed-Thu)：useEffect + React Router
+
+**Guided Practice**：从API加载用户列表 + 路由配置
+```tsx
+// 数据获取
+useEffect(() => {
+  const fetchUsers = async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    const data = await res.json();
+    setUsers(data);
+  };
+  fetchUsers();
+}, []); // 空数组 = 仅在组件挂载时执行一次
+
+// 路由配置
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+function App() {
+  return (
+    <BrowserRouter>
+      <nav>
+        <Link to="/">首页</Link>
+        <Link to="/about">关于</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+```
+
+**PM视角**
+> **问题**：路由（Routing）对产品意味着什么？
+> **回答**：路由是产品的**信息架构**。清晰、可分享的URL（如 `/product/123`）让用户能收藏、分享特定页面，也便于搜索引擎抓取。**每个页面都应有唯一的URL**。
+
+---
+
+#### Day 15 (Friday)：独立项目（学生独自完成）
+
+**项目**：个人博客前端（React + TypeScript + React Router）
+- 首页：文章列表（从API获取）
+- 文章详情页：`/post/:id`
+- 关于页：个人简介
+- 使用 `useEffect` 获取数据，显示Loading/Error状态
+- Git提交历史清晰
+
+---
+
+### 📅 Week 5-6：状态管理与进阶
+
+| Day | 主题 | Guided Practice | 独立项目 |
+|:---:|:---|:---|:---|
+| 16 | Context API | 实现全局主题切换（暗色/亮色模式） | 购物车全局状态管理 |
+| 17 | 表单处理 | React Hook Form + Zod 验证 | 注册/登录表单 |
+| 18 | 自定义Hooks | 封装 `useFetch` 复用数据请求 | 封装 `useLocalStorage` |
+| 19-20 | **综合项目** | 电商网站前端（商品列表 + 购物车 + 结账流程） | 学生独立完成变体（如二手交易平台前端） |
+
+---
+
+## 四、第三阶段详细规划（Week 7-10）：Node.js + 数据库
+
+### 🎯 阶段目标
+- ✅ 掌握 Node.js + Express 搭建 API
+- ✅ 掌握 RESTful API 设计
+- ✅ 掌握 PostgreSQL 或 MongoDB 操作
+- ✅ 掌握 JWT 身份验证
+
+---
+
+### 📅 Week 7-8：Node.js + Express + REST API
+
+| Day | 主题 | Guided Practice | PM视角 |
+|:---:|:---|:---|:---|
+| 21 | Node.js入门 | 创建第一个HTTP服务器，理解 `req` / `res` | **前后端分离**：后端专注数据，前端专注UI，并行开发 |
+| 22 | Express路由 | 实现 `GET /tasks`、`POST /tasks` | **RESTful规范**：统一的URL设计降低沟通成本 |
+| 23 | 中间件 | `cors`、`helmet`、`body-parser`、自定义日志 | **安全与可观测性**：中间件是产品的“安检门”和“监控摄像头” |
+| 24 | 错误处理 | 全局错误捕获中间件 | **用户体验**：统一的错误格式让前端能优雅提示 |
+| 25 | **独立项目** | 实现完整的 Task CRUD API（内存存储） | — |
+
+---
+
+### 📅 Week 9-10：数据库 + 身份验证
+
+| Day | 主题 | Guided Practice | PM视角 |
+|:---:|:---|:---|:---|
+| 26-27 | PostgreSQL | 使用 `pg` 库连接数据库，执行 SQL 查询 | **数据持久化**：用户数据是核心资产，必须可靠存储 |
+| 28-29 | JWT认证 | 注册（密码加密 `bcrypt`）→ 登录（返回Token）→ 鉴权中间件 | **安全底线**：密码绝不能明文存储；Token = “临时门票” |
+| 30 | 关联查询 | 多表关联（如 `users` 与 `tasks` 的关系） | **数据建模**：好的表结构设计决定产品功能扩展的灵活性 |
+| 31-35 | **综合项目** | 完整的“任务管理系统API”（用户注册登录 + 任务的CRUD + 权限控制） | — |
+
+---
+
+## 五、第四阶段详细规划（Week 11-14）：DevOps + 综合实战
+
+### 🎯 阶段目标
+- ✅ 掌握 Docker 容器化
+- ✅ 掌握 GitHub Actions CI/CD
+- ✅ 掌握单元测试与集成测试
+- ✅ 完成全栈综合项目并上线
+
+---
+
+### 📅 Week 11-12：Docker + 测试
+
+| Day | 主题 | Guided Practice | PM视角 |
+|:---:|:---|:---|:---|
+| 36-37 | Docker | 编写 `Dockerfile`，构建镜像，容器化运行Node应用 | **环境一致性**：消灭“在我电脑上能跑”的推诿，确保开发/生产环境一致 |
+| 38-39 | Vitest/Jest | 为工具函数写单元测试，为API写集成测试 | **质量安全网**：有自动化测试，团队才敢频繁迭代重构 |
+| 40 | 测试覆盖率 | 生成覆盖率报告，理解测试指标 | — |
+
+---
+
+### 📅 Week 13：CI/CD + Linux基础
+
+| Day | 主题 | Guided Practice | PM视角 |
+|:---:|:---|:---|:---|
+| 41-42 | GitHub Actions | 配置流水线：代码Push → 自动运行测试 → 自动部署到Render/AWS | **敏捷交付**：早上提PR，下午就能上线，极大缩短价值交付周期 |
+| 43-44 | Linux基础 | `ls`、`cd`、`grep`、`vim`、文件权限、进程管理 | **远程工作必备**：服务器都是Linux，必须掌握基本运维能力 |
+| 45 | 环境变量配置 | `.env` 文件管理敏感信息 | **安全管理**：密钥绝不能提交到Git仓库 |
+
+---
+
+### 📅 Week 14：全栈综合项目（终极实战）
+
+**项目名称**：团队任务协作看板
+
+**技术栈**：
+| 层级 | 技术 |
+|:---|:---|
+| 前端 | React + TypeScript + React Router + Context API |
+| 后端 | Node.js + Express + JWT |
+| 数据库 | PostgreSQL |
+| 运维 | Docker + GitHub Actions + 部署上线 |
+
+**执行节奏（Day 46-50）**：
+| Day | 任务 | PM视角 |
+|:---:|:---|:---|
+| 46 | 需求分析 + 数据库建模（ER图） | **产品规划**：先想清楚用户故事（User Story），再写代码 |
+| 47-48 | 后端API开发（团队管理、任务CRUD、成员邀请） | — |
+| 49 | 前端页面开发（看板视图、任务拖拽） | — |
+| 50 | 联调 + Docker容器化 + CI/CD配置上线 | **上线即产品**：部署到公网，真实可用 |
+
+**Day 51-55**：学生独立完成第二/第三个综合项目（如电商全栈、博客平台），讲师持续Code Review。
+
+---
+
+## 六、每日晨会模板（每日10:00执行）
+
+```
+【日期】YYYY-MM-DD (Week X, Day X)
+
+【今日概念清单】
+| 中文 | 英文 | 释义 |
+|:---|:---|:---|
+| ... | ... | ... |
+
+【昨日回顾】
+✅ 完成内容：
+⚠️ 遇到的问题：
+💡 解决方案：
+
+【今日目标】
+- 项目产出：
+- 技术点：
+- 交付物：
+
+【PM快问快答】
+Q：这个技术如果不做，用户会有什么损失？
+A：...
+```
+
+---
+
+## 七、评估体系（PM视角版）
+
+| 维度 | 权重 | 评分标准 |
+|:---|:---:|:---|
+| **技术实现** | 60% | 代码是否能运行？是否按规范完成所有功能？ |
+| **用户体验** | 20% | 交互是否流畅？错误提示是否友好？是否适配移动端？ |
+| **产品思维** | 10% | 功能设计是否合理？是否覆盖用户真实场景？ |
+| **工程规范** | 10% | Git提交是否清晰？代码是否可读？有无注释？ |
+
+**每周交付物检查清单**：
+- [ ] GitHub仓库（公开，README完善）
+- [ ] 至少N次有意义的Git提交
+- [ ] 项目在本地浏览器正常运行
+- [ ] 无 `console.log` 调试残留
+- [ ] 讲师Code Review通过
+
+---
+
+## 八、导出Word指南
+
+**方法1（推荐）**：复制以上全部内容 → 粘贴到 Google Docs → “文件” → “下载” → “Microsoft Word (.docx)”。
+
+**方法2**：使用 Pandoc 将 Markdown 转换为 Word：
+```bash
+pandoc web-sop.md -o web-sop.docx
+```
+
+---
+
+**🎯 总结**：这份SOP以你的“PM视角+四步法+晨会”为骨架，融合了Claude方案的“Day-by-Day代码示例和评估体系”。从Day 1到Day 55，你每天都有明确的目标、可跟做的代码、以及PM视角的商业思考。坚持执行，14周后你将具备中级全栈开发者的核心能力。
+
+祝你教学顺利，学习愉快！🚀

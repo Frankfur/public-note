@@ -1,0 +1,221 @@
+/* The overall style */
+body {
+  font-family: Arial, helvetica, sans-serif;
+  background-color:#f4f4f4;
+  color:#333;
+  margin:0;
+  padding: 0;
+  line-height:1.6;
+}
+
+header {
+  background-color: #2c3e50;
+  padding:15px 0;
+}
+
+.logo {
+  color:#ffffff;
+  font-size:24px;
+  font-weight:bold;
+  text-align: center;
+}
+
+/* 导航栏样式,应用了最经典的水平居中布局，工具是flex */
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
+  display: flex;
+  justify-content: center; /* 让导航栏的链接均匀分布在整个导航栏中 */
+  gap: 15px;
+}
+
+nav ul li {
+  margin: 0;
+}
+
+nav ul li a {
+  color: #ffffff;
+  text-decoration:none; 
+  font-size:16px;
+  padding: 5px 10px;
+  border-radius: 4px;/*功能是在按钮上添加圆角，不过我没有看到变化 */
+  transition: all 0.3s ease; /* 会让:hover 的颜色变化平滑， all 表示所有属性都变化 */
+}
+
+#home {
+  display:flex;
+  flex-direction:column;
+  align-items:center;  /*在副轴上居中对齐文本*/
+  justify-content:center; /*在主轴上居中对齐*/
+  text-align:center;
+  padding:60px 30px;
+  min-height:400px;
+}
+
+nav ul li a:hover {
+  color: #18bc9c;
+  background-color:rgba(255, 255, 255, 0.1);
+}
+/*以下三行代码是处理鼠标点击后出现的轮廓线*/
+nav ul li a:focus,
+nav ul li a:active {
+  outline: none; 
+}
+
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 30px;
+}
+
+/* 加入一个包含阴影的效果： */
+section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  border-bottom: 2px solid #2c3e50; /* 边缘可以是实线也可以是其它样式*/
+  padding-bottom: 10px;
+  margin:0;
+}
+
+form {
+  display:flex;
+  flex-direction:column;
+  justify-content: flex-start;
+  gap:10px;
+}
+
+.projects-grid {
+  display:flex;
+  flex-wrap:wrap; /*作用是让项目卡片在宽度不足时换行*/
+  gap:20px;
+}
+
+.project-card {
+  flex: 1 1 250px; /*flex: 1 1 250px; 表示项目卡片初始宽度 250px，可以根据容器空间自动伸展或收缩。 前2个参数只有值1，0，没有其它值 */
+  background-color:#f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding:20px;
+} 
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+/* 解读以下代码的作用，逐个说明： */
+/* 我给输入框和文本域添加了一个类名 form-input，这样可以统一设置它们的样式，而不影响其他元素的样式。 */
+/* 1. 宽度：100% 表示输入框和文本域的宽度占满父元素的宽度 */
+/* 2. 内边距：10px 表示输入框和文本域的内边距为 10px */
+/* 3. 边框：1px solid #ccc 表示输入框和文本域的边框为 1px 实线，颜色为 #ccc */
+/* 4. 圆角：4px 表示输入框和文本域的圆角为 4px */
+/* 5. 字体大小：16px 表示输入框和文本域的字体大小为 16px */
+.form-input {   
+  width: 100%;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:4px;
+  font-size: 16px;
+}
+
+/* 解读以下代码的作用，逐个说明： */
+/* 1. 当用户点击输入框或文本域时，会触发 focus 事件 */
+input:focus,
+textarea:focus {
+  border-color: #2c3e50;
+  outline:none;
+}
+
+button[type="submit"] {
+  background-color: hsl(188, 94%, 46%);
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #2c3e50;
+}
+
+footer {
+  background-color:#2c3e50;
+  color:#ffffff;
+  text-align:center;
+  padding: 20px 0;
+  margin-top:30px;
+}
+
+footer p {
+  margin: 0px;
+  font-size: 14px;
+  color: #bdc3c7;
+}
+
+/* 以下是针对about.html设置的样式 */
+
+article,
+aside {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 30px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+article h2,
+aside h2 {
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+/*======响应式设计：手机端导航栏======*/
+  /*max-width：因为手机端的宽度小于 600px，所以需要应用新的样式*/
+  /*新增加的样式需要在旧的样式之后：因考虑到css是从上往下渲染，*/
+  /*padding: 增大点击区域*/
+@media (max-width: 600px) {
+  nav ul {
+    gap: 5px;
+  }
+  nav ul li a {
+    font-size: 14px;
+    padding: 8px 12px;
+  }
+}
+
+@media (max-width:600px) {
+  #home {
+    padding:40px 20px;
+    min-height:300px;
+  }
+  #home h1 {
+    font-size:24px;
+  }
+  #home p {
+    font-size:14px;
+  }
+}
+
+/* 响应式设计：手机端项目卡片,实现卡片上下垂直堆叠 */
+@media (max-width:600px) {
+  .project-card {
+    flex:1 1 100%;
+  }
+}
+
+@media (max-width:600px) {
+  button[type="submit"] {
+    width:100%;
+  }
+}
+

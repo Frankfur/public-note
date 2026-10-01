@@ -1,0 +1,39 @@
+/* 1. 引入字体 */
+@font-face {
+  font-family: "SpaceX";
+  src: url("fonts/SpaceX.ttf") format("truetype");
+}
+
+/* 2. 全局使用（让整个页面的文字都变成 SpaceX 风格） */
+body {
+  font-family: "Orbitron", sans-serif;
+  margin: 10px auto;
+  padding: 10px;
+  text-align: center;
+}
+
+/* 其余样式保持不变... */
+h1 {
+  color: white;
+  font-family: "Orbitron", sans-serif;
+}
+h2 {
+  color: rgba(14, 66, 221, 0.805);
+  font-family: "SpaceX", sans-serif;
+}
+
+.btn {
+  background-color: white;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: blue;
+  padding: 10px 20px;
+  font-family: inherit;
+}
+.header {
+  background-image: url("img/space.gif");
+  background-size: cover;
+  color: white;
+}

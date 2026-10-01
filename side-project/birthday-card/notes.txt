@@ -1,0 +1,50 @@
+2026-09-30
+1. 制作一份生日卡片，鼠标悬停时，显示卡片下面的动图； 关键点： 
+  首先，使用一个大的container来包含所有图片组合，如果只是一个图片图片，则一个containeer就够了。后续用它来应用flexbox布局，让图片组合在container中竖向居中排列。
+  其次，针对每个图片组合，使用一个div窗口包裹； 
+  所有div中的图片组合： div class统一命名；
+  组合中，使用相同的img组合，即上面统一放前图img，赋予class名，各个组合通用此名称；下面放动图img，赋予class名，同样各个组合通用此名称。
+
+
+以下是完整的css代码： 
+```css
+/* 1. 定义一个container来包含所有图片组合 */
+.gift-container-all {
+  display: flex;
+---------
+
+  .gift-container-all {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+}
+
+.gift-container {
+  position: relative;
+  width: 300px; /* 根据你的图片实际大小调整 */
+  height: 300px;
+  cursor: pointer; /* 鼠标变成小手 */
+}
+
+.gift-container .giftbox {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gift-container .wow {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 4. 核心：鼠标悬停时，显示新图片 */
+.gift-container:hover .wow {
+  display: block;
+}

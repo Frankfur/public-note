@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>My Portfolio</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="logo">My Portfolio</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <h1>Hello, I'm Frank Si.</h1>
+      <p>I am learning full-stack web development. I started this journey with a curiosity about how websites work and now I'm building my own projects step by step.</p>
+    </section>
+
+    <!-- 1. add id in div: project-container
+        2. remove the content for 3 project cards 
+        3. use JS codes to dynamically generate project cards -->
+    <section id="projects">
+      <h2>My Projects</h2>
+      <div class="project-grid" id = "project-container">
+        <!-- <article class="project-card">
+          <h3>Project 1</h3>
+          <p>This is a brief description of Project 1.</p >
+        </article>
+        <article class="project-card">
+          <h3>Project 2</h3>
+          <p>This is a brief description of Project 2.</p>
+        </article>
+        <article class="project-card">
+          <h3>Project 3</h3>
+          <p>This is a brief description of Project 3.</p>
+        </article> -->
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <form>
+        <label for="name">Your Name</label>
+        <input type="text" class = "form-input" id="name" placeholder="Enter your name" required />
+
+        <label for="email">Your Email</label>
+        <input type="email" class = "form-input" id="email" placeholder="Enter your email" required />
+
+        <label for="message">Your Message? or Question</label>
+        <textarea class = "form-input" id="message" placeholder="Any thoughts?"></textarea>
+
+        <label for="age">Age</label>
+        <input type="number" class = "form-input" id="age" placeholder="Enter your age" required />
+
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

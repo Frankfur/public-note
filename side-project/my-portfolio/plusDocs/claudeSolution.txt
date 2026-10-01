@@ -1,0 +1,1149 @@
+我来为你创建一份完整的14周Web全栈学习SOP清单，采用Project-based + Guided Practice的模式。这会非常详细。现在为你创建一份完整的14周Web全栈学习SOP清单。这是一份详尽的实操指南。
+
+# 📚 14周Web全栈学习完整SOP清单
+
+## 一、学习框架概览
+
+```
+第1阶段（Week 1-2）：前端基础三件套 + Git入门
+目标：建立HTML/CSS/JS基础，学会用Git协作
+
+第2阶段（Week 3-6）：React框架 + 前端生态
+目标：掌握组件化开发，能独立完成前端项目
+
+第3阶段（Week 7-10）：Node.js后端 + 数据库
+目标：会搭建API，理解全栈架构
+
+第4阶段（Week 11-14）：DevOps + 综合项目
+目标：会部署上线，理解生产环境
+```
+
+---
+
+## 二、学习方法论
+
+### 每周学习周期
+
+```
+Monday-Friday：
+  09:00-12:00  Guided Practice演示 + 学生跟做
+  12:00-14:00  Lunch + 休息
+  14:00-17:00  自主编码 + 知识点讲解
+  17:00-18:00  代码审查 + Q&A
+
+Friday 17:30：
+  完成周项目，Push到GitHub
+
+Saturday-Sunday：
+  独立项目构建（Project Challenge）
+
+Daily @ 10:00am：
+  15分钟晨间回顾（概念总结 + 次日预告）
+```
+
+### Guided Practice流程（标准模板）
+
+每个新项目都遵循这个流程：
+
+```
+第1步（Day 1-2）：Demonstration
+├─ 讲师完整演示项目从0-1
+├─ 学生跟随操作（边看边做）
+├─ 记录所有命令和关键步骤
+└─ Git commit: "Guided Practice: [Project Name]"
+
+第2步（Day 3）：Concept Breakdown
+├─ 深度讲解涉及的技术概念（中英文）
+├─ 从"为什么"角度讲解（Product视角）
+├─ 学生提问和讨论
+└─ 输出概念卡片（Digital Notes）
+
+第3步（Day 4-5）：Independent Project
+├─ 学生独立完成变体项目
+├─ 选用不同的数据/业务逻辑
+├─ Git管理全过程（commit message要清晰）
+└─ 完成后请讲师Review
+
+第4步（Day 5 PM）：Code Review + Feedback
+├─ 讲师Code Review
+├─ 给出改进建议
+├─ 学生根据反馈优化
+└─ Final commit: "Review feedback applied"
+```
+
+---
+
+## 三、阶段1详细规划（Week 1-2）
+
+### 阶段1总体目标
+
+```
+✅ 理解HTML5语义化结构
+✅ 掌握CSS3 Flexbox/Grid布局
+✅ 学会JavaScript DOM操作和异步编程
+✅ 能使用Git管理版本
+✅ 完成一个完整的交互式网页项目
+```
+
+### 第1周：HTML5 + CSS3基础
+
+#### Day 1 (Monday)：HTML5入门 + Git Setup
+
+**上午（9:00-12:00）**
+- **Guided Practice项目**：个人博客首页（5个Section）
+  ```
+  目标：建立一个语义化的HTML5文档
+  涉及技术：
+  ├─ HTML5语义标签（<header>, <nav>, <article>, <footer>等）
+  ├─ 表单元素 (<input>, <textarea>, <button>)
+  ├─ 多媒体 (<img>, <video>, <audio>)
+  └─ 无障碍属性 (alt, aria-label, role)
+  ```
+
+- **演示步骤**（讲师）：
+  ```bash
+  1. mkdir web-learning && cd web-learning
+  2. git init
+  3. touch index.html
+  4. 编写HTML5结构（讲师边写边讲解）
+  5. git add index.html && git commit -m "feat: HTML structure complete"
+  6. 在浏览器打开，展示DOM结构
+  ```
+
+- **学生跟做**：
+  - 复制讲师的操作
+  - 记录所有命令到笔记
+  - 理解每个HTML标签的含义
+
+**下午（14:00-17:00）**
+- **概念讲解**（30分钟）：
+  ```
+  1. 语义化标签为什么重要？
+     ├─ 搜索引擎理解内容 (SEO)
+     ├─ 屏幕阅读器可访问性 (A11Y)
+     ├─ 代码可维护性
+     └─ 开发者意图表达
+
+  2. HTML5的新标签对比表：
+     <div class="header"> vs <header>
+     <div class="nav"> vs <nav>
+     <div class="article"> vs <article>
+  
+  3. 产品经理视角：
+     → 为什么要用语义化？
+     → 用户搜到我们的内容吗？
+     → 残障用户能用我们的产品吗？
+  ```
+
+- **学生独立项目**（Day 1 PM + Day 2）：
+  ```
+  项目名：个人作品集网站
+  要求：
+  ├─ 至少8个不同的语义化标签
+  ├─ 1个表单（联系方式）
+  ├─ 至少2张图片（带alt文本）
+  ├─ 合理的页面结构
+  └─ Git记录提交历史
+
+  Git Commits应该是：
+  - "feat: add header with navigation"
+  - "feat: add hero section"
+  - "feat: add portfolio section"
+  - "feat: add contact form"
+  - "docs: add comments for accessibility"
+  ```
+
+---
+
+#### Day 2 (Tuesday)：Git深入 + HTML5多媒体
+
+**上午（9:00-12:00）**
+- **Guided Practice**：Git工作流完全指南
+  ```
+  场景：模拟一个真实的协作流程
+  
+  演示内容：
+  1. 创建分支：git checkout -b feature/add-footer
+  2. 修改文件：编辑index.html，添加footer
+  3. 查看差异：git diff
+  4. 分段提交：git add -p（选择性添加）
+  5. 写好commit message：
+     git commit -m "feat: add semantic footer with copyright"
+  6. 推送分支：git push origin feature/add-footer
+  7. 合并回主分支：git checkout main && git merge
+  ```
+
+- **Git概念卡片**：
+  ```
+  Working Directory → Staging Area → Repository
+  
+  工作目录（你在电脑上编辑的文件）
+       ↓ git add
+  暂存区（准备好提交的文件）
+       ↓ git commit
+  仓库（正式的历史记录）
+  
+  为什么要分三层？
+  → 灵活性：可以分批提交
+  → 原子性：保证每次提交都是完整功能
+  → 追溯性：清晰的历史记录
+  ```
+
+**下午（14:00-17:00）**
+- **视频/音频标签深入学习**：
+  ```html
+  <img> vs <picture> vs <figure>
+  → 什么时候用哪个？响应式图片怎么做？
+
+  <video> 和 <audio> 的属性
+  → controls, autoplay, muted, loop
+  → 浏览器兼容性和格式支持
+
+  PM视角：
+  → 用户网络较慢怎么优化加载？
+  → 不同设备怎么展示不同清晰度的图片？
+  ```
+
+- **学生独立练习**：
+  ```
+  在你的个人作品集网站中：
+  ├─ 用<picture>实现一张响应式图片
+  ├─ 添加一个<video>演示作品
+  ├─ 用<audio>嵌入背景音乐
+  └─ 所有新增功能用独立分支开发
+  ```
+
+---
+
+#### Day 3 (Wednesday)：CSS3基础 + Flexbox
+
+**上午（9:00-12:00）**
+- **Guided Practice项目**：搭建一个响应式导航栏
+  ```
+  目标：用Flexbox实现导航栏布局
+  
+  演示：
+  1. HTML结构：
+     <nav>
+       <div class="logo">Logo</div>
+       <ul class="nav-links">
+         <li><a href="">Home</a></li>
+         <li><a href="">About</a></li>
+         <li><a href="">Contact</a></li>
+       </ul>
+     </nav>
+  
+  2. CSS Flexbox魔法：
+     nav {
+       display: flex;
+       justify-content: space-between;  /* 两端对齐 */
+       align-items: center;             /* 垂直居中 */
+       padding: 1rem;
+     }
+     
+     .nav-links {
+       display: flex;
+       gap: 2rem;  /* 子元素间距 */
+     }
+  
+  3. 响应式处理：
+     @media (max-width: 768px) {
+       nav {
+         flex-direction: column;  /* 竖直排列 */
+       }
+     }
+  ```
+
+**下午（14:00-17:00）**
+- **CSS选择器复习**：
+  ```
+  为什么要学选择器？
+  → 准确选中你要修改的元素
+  → 避免冲突和副作用
+  
+  选择器优先级（Specificity）：
+  - 元素选择器 (div) = 1分
+  - 类选择器 (.button) = 10分
+  - ID选择器 (#header) = 100分
+  - 内联样式 (style="") = 1000分
+  
+  规则：
+  - 尽量用类选择器（可重用，特异度适中）
+  - 避免用ID选择器（特异度太高）
+  - 从不用!important（是代码坏味道）
+  ```
+
+- **Flexbox完全指南**：
+  ```
+  容器属性（Flex Container）：
+  - display: flex
+  - flex-direction: row | column
+  - justify-content: center | space-between | space-around
+  - align-items: center | flex-start | flex-end
+  - gap: 1rem
+  - flex-wrap: wrap
+
+  项目属性（Flex Item）：
+  - flex: 1  /* flex-grow, flex-shrink, flex-basis缩写 */
+  - align-self: center
+  - order: 1
+  
+  PM视角：
+  → 布局灵活性：手机、平板、PC都要适配
+  → 性能：Flexbox比float快
+  → 易维护：CSS代码更清晰
+  ```
+
+---
+
+#### Day 4-5 (Thursday-Friday)：Grid + 学生独立项目
+
+**Day 4 上午（9:00-12:00）**
+- **Guided Practice项目**：用Grid实现响应式卡片网格
+  ```
+  场景：作品展示区域（3列，响应式）
+  
+  HTML：
+  <div class="portfolio-grid">
+    <article class="project-card">
+      <img src="project1.jpg" alt="">
+      <h3>Project 1</h3>
+      <p>Description</p>
+    </article>
+    <!-- 更多卡片 -->
+  </div>
+  
+  CSS Grid魔法：
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  解释：
+  - repeat(auto-fit, ...) = 自动填充列
+  - minmax(300px, 1fr) = 最小300px，最大平均分
+  - gap = 列之间的间距
+  ```
+
+**Day 4 下午（14:00-17:00）**
+- **Flexbox vs Grid对比**：
+  ```
+  Flexbox（一维）：
+  ├─ 用于单行或单列布局
+  ├─ 适合导航栏、按钮组
+  └─ 例：水平菜单
+
+  Grid（二维）：
+  ├─ 用于整体页面布局
+  ├─ 适合卡片网格、仪表盘
+  └─ 例：作品展示网格
+
+  实际应用：
+  - 页面整体 = Grid
+  - 导航栏 = Flexbox
+  - 卡片内部 = Flexbox
+  ```
+
+**Day 5（Friday）学生独立项目**
+- **项目**：完整的响应式网站首页
+  ```
+  要求：
+  ├─ 用Grid组织整个页面布局
+  ├─ 用Flexbox处理导航栏
+  ├─ 至少一个Flexbox卡片组件
+  ├─ 手机、平板、PC三个断点的响应式设计
+  ├─ 至少5个不同的CSS选择器类型
+  └─ 所有新代码用分支开发
+
+  交付物：
+  1. 代码放在GitHub（public repo）
+  2. 有清晰的git commit历史
+  3. 有README说明项目结构
+  4. 在浏览器中打开，能正常显示
+  ```
+
+---
+
+### 第2周：JavaScript基础 + 异步编程
+
+#### Day 6 (Monday)：变量、数据类型、函数
+
+**上午演示**
+- **Guided Practice**：构建一个计算器应用
+  ```javascript
+  // HTML
+  <input type="number" id="input1" placeholder="数字1">
+  <input type="number" id="input2" placeholder="数字2">
+  <button id="addBtn">相加</button>
+  <div id="result"></div>
+
+  // JavaScript
+  // 1. 变量和数据类型
+  let num1 = 0;  // number
+  let num2 = 0;  // number
+  let result = ""; // string
+
+  // 2. 函数定义
+  function add(a, b) {
+    return a + b;
+  }
+
+  // 3. DOM操作
+  document.getElementById('addBtn').addEventListener('click', function() {
+    num1 = parseFloat(document.getElementById('input1').value);
+    num2 = parseFloat(document.getElementById('input2').value);
+    result = add(num1, num2);
+    document.getElementById('result').textContent = `结果：${result}`;
+  });
+  ```
+
+- **概念讲解**：
+  ```
+  变量声明（Variable Declaration）：
+  - var: 函数级作用域（过时了，不用）
+  - let: 块级作用域（推荐）
+  - const: 常量（默认用这个）
+
+  数据类型（Data Types）：
+  - Primitive（原始类型）：number, string, boolean, null, undefined
+  - Complex（复杂类型）：object, array, function
+
+  函数（Function）：
+  function add(a, b) {        // 函数声明
+    return a + b;
+  }
+  
+  const add = (a, b) => a + b; // 箭头函数（更现代）
+
+  作用域（Scope）：
+  全局作用域 > 函数作用域 > 块级作用域
+  → 变量查找：从内到外
+  ```
+
+**下午实践**
+- 学生改造计算器：
+  ```
+  ├─ 支持减、乘、除
+  ├─ 添加错误处理（除以0提示）
+  ├─ 用const/let而不是var
+  ├─ 用箭头函数改写add函数
+  └─ 添加清空按钮（clear）
+  ```
+
+---
+
+#### Day 7 (Tuesday)：DOM操作深入
+
+**演示项目**：待办事项应用（Todo List）
+```javascript
+// 需求：
+1. 输入框输入待办项
+2. 点击"添加"按钮添加到列表
+3. 点击列表项标记为完成（改变样式）
+4. 点击"删除"按钮移除项
+
+// HTML结构
+<input id="todoInput" type="text" placeholder="输入待办项">
+<button id="addBtn">添加</button>
+<ul id="todoList"></ul>
+
+// JavaScript关键操作
+// 1. 选中元素
+const todoInput = document.getElementById('todoInput');
+const addBtn = document.getElementById('addBtn');
+const todoList = document.getElementById('todoList');
+
+// 2. 添加事件监听
+addBtn.addEventListener('click', function() {
+  const text = todoInput.value;
+  if (!text) return;  // 验证输入不为空
+  
+  // 3. 创建新元素
+  const li = document.createElement('li');
+  li.textContent = text;
+  
+  // 4. 添加属性和样式
+  li.style.cursor = 'pointer';
+  li.addEventListener('click', function() {
+    li.style.textDecoration = 'line-through';
+    li.style.color = '#999';
+  });
+  
+  // 5. 添加到DOM
+  todoList.appendChild(li);
+  
+  // 6. 清空输入框
+  todoInput.value = '';
+});
+```
+
+**DOM操作核心概念**：
+```
+选择元素：
+- document.getElementById('id')
+- document.querySelector('.class')
+- document.querySelectorAll('div')
+
+修改内容：
+- element.textContent = "新文本"
+- element.innerHTML = "<strong>HTML</strong>"
+
+修改样式：
+- element.style.color = 'red'
+- element.classList.add('active')
+
+事件监听：
+- element.addEventListener('click', function() {})
+- element.addEventListener('keypress', function(e) { if(e.key==='Enter') {} })
+
+创建和插入：
+- document.createElement('div')
+- parent.appendChild(child)
+- parent.insertBefore(child, sibling)
+
+删除：
+- element.remove()
+- parent.removeChild(child)
+```
+
+---
+
+#### Day 8 (Wednesday)：异步编程基础
+
+**问题导入**：
+```
+为什么需要异步编程？
+
+场景1：网络请求
+const response = fetch('api.example.com/data');
+console.log(response);  // 打印什么？
+→ 问题：请求还没完成，code就往下执行了
+
+场景2：延时操作
+console.log('开始');
+setTimeout(() => console.log('等待2秒后'), 2000);
+console.log('结束');
+→ 输出顺序：开始 → 结束 → 等待2秒后
+
+为什么？
+→ 因为JavaScript是单线程的
+→ 长时间操作会阻塞UI
+→ 异步允许"继续往下执行，等结果好了再处理"
+```
+
+**异步编程三种方式**：
+```
+方式1：Callback（回调，已过时）
+function fetchData(callback) {
+  setTimeout(() => {
+    callback({name: 'John'});
+  }, 1000);
+}
+
+fetchData(function(data) {
+  console.log(data); // 1秒后打印
+});
+
+问题：嵌套多了就是"Callback Hell"
+
+方式2：Promise（2015年引入）
+function fetchData() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({name: 'John'});
+    }, 1000);
+  });
+}
+
+fetchData()
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
+
+优点：链式调用，避免嵌套
+
+方式3：Async/Await（2017年引入，最现代）
+async function getData() {
+  try {
+    const data = await fetchData();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+优点：代码看起来像同步，最易读
+```
+
+**学生任务**：
+```
+用Async/Await改写待办应用：
+1. 从假的API获取初始待办列表
+2. 点击添加时，模拟保存到服务器（延迟1秒）
+3. 添加成功提示
+
+示例：
+async function saveTodo(text) {
+  try {
+    // 模拟API调用
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('保存成功');
+  } catch (error) {
+    console.error('保存失败');
+  }
+}
+```
+
+---
+
+#### Day 9 (Thursday)：综合项目Day 1
+
+**学生独立项目**：互动问卷调查表
+```
+要求：
+├─ HTML：一份5个问题的表单
+├─ JavaScript：
+│  ├─ 验证表单（所有字段不能为空）
+│  ├─ 计算得分（选项对应不同分数）
+│  ├─ 显示结果页面（根据分数显示不同建议）
+│  └─ 用async模拟提交到服务器
+├─ CSS：美观的表单样式和响应式设计
+└─ Git：清晰的提交历史
+
+核心代码框架：
+1. DOM选择
+2. 表单验证函数
+3. 得分计算函数
+4. 异步提交函数（async/await）
+5. 事件监听和流程控制
+```
+
+---
+
+#### Day 10 (Friday)：项目完成 + 晨间回顾
+
+**早上10:00**
+- **晨间回顾会（Daily Standup）**：15分钟
+  ```
+  讲师带领学生总结：
+  
+  【今日学习概念】
+  - Callback: 函数作为参数传递，用于处理异步操作完成
+  - Promise: 代表一个可能最终完成（或失败）的异步操作
+  - Async/Await: 用同步语法写异步代码
+  - DOM API: 操作网页内容和样式的JavaScript接口
+  - Event Listener: 监听用户交互（click, input等）
+
+  【关键概念整理表】
+  | 概念 | 中文 | 用途 | 示例 |
+  |-----|------|------|------|
+  | Callback | 回调 | 异步操作完成后执行代码 | setTimeout(fn, 1000) |
+  | Promise | 承诺 | 更优雅地处理异步 | fetch().then() |
+  | Async | 异步函数 | 声明异步函数 | async function getData() |
+  | Await | 等待 | 暂停执行直到Promise解决 | const data = await fetch() |
+  
+  【明日计划】
+  Day 11: TypeScript基础介绍
+  Day 12: React第一个组件
+  Day 13-14: 构建完整的React应用
+  ```
+
+**上午11:00-12:00**
+- 学生完成项目编码
+- Push到GitHub
+
+**下午14:00-17:00**
+- **讲师Code Review**
+  - 检查代码质量
+  - 提出改进建议
+  - 学生根据反馈优化
+
+**晚上**
+- 学生完成优化
+- Final commit: "docs: address code review feedback"
+
+---
+
+## 四、第2阶段规划（Week 3-6）：React框架
+
+### Week 3-4：React基础
+
+#### Day 11 (Monday)：React入门 + 组件概念
+
+**问题导入**
+```
+传统方式的问题：
+- 页面复杂时，JavaScript代码混乱
+- 数据变化需要手动更新DOM
+- 代码难以复用
+
+解决方案：React
+- 组件化：分解为小的、可复用的部分
+- 声明式：你说"我要什么样"，React负责"怎么做"
+- 单向数据流：数据 → 组件 → UI
+
+类比：
+传统方式 = 一张白纸，用笔一笔笔画
+React方式 = 一本积木书，组合不同的积木
+```
+
+**Guided Practice项目**：第一个React组件
+```jsx
+// 安装React
+npx create-react-app my-first-react-app
+cd my-first-react-app
+npm start
+
+// 创建一个简单组件
+function Welcome() {
+  return <h1>Hello, React!</h1>;
+}
+
+// JSX是什么？
+// JSX = JavaScript + XML
+// 让你在JS中写HTML一样的语法
+const element = <h1>Hello</h1>;
+// 实际被编译为：
+// const element = React.createElement('h1', null, 'Hello');
+```
+
+**概念讲解**：
+```
+组件（Component）：
+- 可复用的代码块
+- 返回一些UI
+
+函数组件 vs 类组件：
+function Welcome(props) {
+  return <h1>Hello {props.name}</h1>;
+}
+
+类组件（旧方式，了解即可）：
+class Welcome extends React.Component {
+  render() {
+    return <h1>Hello {this.props.name}</h1>;
+  }
+}
+
+Props（属性）：
+- 父组件传给子组件的数据
+- 只读的（不能修改）
+- 类似HTML的属性（<img src="" alt="">）
+
+Props示例：
+<Welcome name="John" age={30} />
+
+function Welcome(props) {
+  console.log(props); // { name: "John", age: 30 }
+  return <h1>Hello {props.name}, {props.age}</h1>;
+}
+```
+
+**学生独立项目**（Lesson Project）
+```jsx
+项目：组件卡片库
+1. 创建一个Card组件，接收title, description, image props
+2. 创建3个不同的Card实例
+3. 用CSS让卡片看起来漂亮
+4. 响应式设计
+
+示例代码框架：
+function Card({title, description, image}) {
+  return (
+    <div className="card">
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div className="card-grid">
+      <Card title="..." description="..." image="..." />
+      <Card title="..." description="..." image="..." />
+      <Card title="..." description="..." image="..." />
+    </div>
+  );
+}
+```
+
+---
+
+#### Day 12 (Tuesday)：State和Hooks
+
+**State vs Props对比**：
+```
+Props：
+├─ 父传子的数据
+├─ 只读，不能修改
+└─ 跨组件通信
+
+State：
+├─ 组件自己的数据
+├─ 可修改（通过setState）
+└─ 修改会重新渲染UI
+
+类比：
+Props = 函数的参数
+State = 函数内的局部变量
+```
+
+**Guided Practice**：计数器应用
+```jsx
+import { useState } from 'react';
+
+function Counter() {
+  // 使用State Hook
+  const [count, setCount] = useState(0);
+  // count = 当前值
+  // setCount = 更新函数
+  // 0 = 初始值
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>
+        增加
+      </button>
+      <button onClick={() => setCount(count - 1)}>
+        减少
+      </button>
+    </div>
+  );
+}
+```
+
+**Hooks讲解**：
+```
+Hook = 在函数组件中"钩入" React特性的方式
+
+最常用的两个Hook：
+
+1. useState：管理状态
+   const [value, setValue] = useState(initialValue);
+   
+   什么时候用？
+   → 需要根据用户交互改变UI
+   → 例如：计数、输入框的值、开关状态
+
+2. useEffect：处理副作用（side effects）
+   副作用 = 组件外的事情
+   ├─ 网络请求
+   ├─ 定时器
+   ├─ 修改DOM（不用React）
+   └─ 订阅事件
+
+   useEffect(callback, dependencies);
+   
+   例如：
+   useEffect(() => {
+     // 组件挂载时获取数据
+     fetch('/api/data').then(res => res.json()).then(data => {
+       setData(data);
+     });
+   }, []); // [] 表示仅在组件挂载时执行
+```
+
+**学生独立项目**：待办应用（React版本）
+```jsx
+function TodoApp() {
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState('');
+
+  function handleAdd() {
+    if (!input) return;
+    setTodos([...todos, { id: Date.now(), text: input, done: false }]);
+    setInput('');
+  }
+
+  function handleToggle(id) {
+    setTodos(todos.map(todo => 
+      todo.id === id ? {...todo, done: !todo.done} : todo
+    ));
+  }
+
+  function handleDelete(id) {
+    setTodos(todos.filter(todo => todo.id !== id));
+  }
+
+  return (
+    <div>
+      <input 
+        value={input} 
+        onChange={(e) => setInput(e.target.value)}
+        onKeyPress={(e) => e.key === 'Enter' && handleAdd()}
+        placeholder="输入待办项"
+      />
+      <button onClick={handleAdd}>添加</button>
+      
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.id}>
+            <input 
+              type="checkbox" 
+              checked={todo.done}
+              onChange={() => handleToggle(todo.id)}
+            />
+            <span style={{textDecoration: todo.done ? 'line-through' : 'none'}}>
+              {todo.text}
+            </span>
+            <button onClick={() => handleDelete(todo.id)}>删除</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+```
+
+---
+
+## 五、晨间回顾模板（每日10:00 AM）
+
+```
+【日期】2025-01-13 (Monday, Week 1, Day 1)
+
+【今日学习目标】
+- 理解HTML5语义化结构
+- 学会使用Git基本命令
+- 完成个人博客首页搭建
+
+【概念术语表】
+┌─────────────────┬──────────┬──────────────────────┐
+│ 中文名称         │ 英文     │ 释义                 │
+├─────────────────┼──────────┼──────────────────────┤
+│ 语义化标签       │ Semantic │ 用有意义的标签标记  │
+│ (HTML5)          │ Tags     │ 内容，而不是div      │
+├─────────────────┼──────────┼──────────────────────┤
+│ 版本控制         │ Version  │ 追踪代码变化历史的  │
+│                 │ Control  │ 系统（Git）          │
+├─────────────────┼──────────┼──────────────────────┤
+│ 提交             │ Commit   │ 保存一个代码快照到  │
+│                 │          │ 仓库                 │
+├─────────────────┼──────────┼──────────────────────┤
+│ 分支             │ Branch   │ 独立的开发线，可并  │
+│                 │          │ 行工作多个功能       │
+└─────────────────┴──────────┴──────────────────────┘
+
+【PM视角分析】
+问题：为什么需要语义化标签？
+解决：
+1. SEO - Google能理解我们网站结构
+2. A11Y - 盲人用屏幕阅读器也能使用
+3. 可维护性 - 6个月后看代码也能理解
+   
+产品价值：
+→ 用户能搜到我们的产品
+→ 所有用户都能用（包括残障人士）
+→ 开发效率高（易维护）
+
+【今日学生成果】
+✓ 学生完成：个人作品集HTML框架
+✓ Git提交：3次（header, main, footer）
+✓ 代码质量：符合HTML5标准
+
+【遇到的问题】
+- 学生对<section>和<article>的区别不清楚
+  解答：article是可独立的内容，section是同类内容分组
+
+【明日计划】
+Day 2：
+- 深入学习HTML表单元素
+- 学习Git分支管理
+- 在作品集中添加联系表单
+
+【家庭作业】
+□ 再看一遍HTML5语义标签列表
+□ 尝试用Git创建两个分支（feature/header, feature/footer）
+□ 不看笔记，写出5个语义标签和它们的用途
+```
+
+---
+
+## 六、导出为Word的完整文档结构
+
+为了让你能导出为Word，这里提供标准格式：
+
+```markdown
+# 14周Web全栈学习计划（完整SOP清单）
+
+## 文档信息
+- 课程名称：Web全栈开发
+- 学习周期：14周
+- 教学方法：Project-Based Learning + Guided Practice
+- 更新日期：2025年1月
+
+## 目录
+1. 学习框架概览
+2. 学习方法论
+3. 第1阶段详细规划（Week 1-2）
+4. 第2阶段详细规划（Week 3-6）
+5. 第3阶段详细规划（Week 7-10）
+6. 第4阶段详细规划（Week 11-14）
+7. 晨间回顾模板
+8. 项目评估标准
+9. 常见问题解答
+
+---
+
+[后续内容按上述详细规划继续...]
+```
+
+---
+
+## 七、生成Word文档指南
+
+### 方法1：使用Google Docs
+1. 创建新Doc
+2. 复制上述Markdown格式内容
+3. 导入到Google Docs（会自动格式化）
+4. 调整样式（标题、缩进、表格）
+5. Download as .docx
+
+### 方法2：使用Markdown转Word工具
+```bash
+# 安装pandoc
+brew install pandoc  # macOS
+
+# 转换
+pandoc learning-plan.md -o learning-plan.docx
+```
+
+### 方法3：直接在Word中
+1. 打开Word
+2. 逐节复制内容
+3. 手工调整格式
+
+---
+
+## 八、评估标准（Grading Rubric）
+
+```
+【第1阶段（Week 1-2）】满分100
+
+HTML5语义化（20分）
+├─ 正确使用7+个语义标签：15分
+├─ 表单元素完整可用：5分
+└─ 无障碍属性（alt, role）：5分
+（总分不超过20）
+
+CSS3布局（25分）
+├─ 正确使用Flexbox：10分
+├─ 正确使用Grid：10分
+├─ 响应式设计（3个断点）：5分
+
+JavaScript交互（25分）
+├─ DOM选择和修改：8分
+├─ 事件监听和处理：8分
+├─ 形式验证逻辑：5分
+├─ 异步操作（async/await）：4分
+
+Git版本控制（15分）
+├─ 至少8次有意义的提交：8分
+├─ 分支管理规范：4分
+├─ Commit message清晰：3分
+
+代码质量（10分）
+├─ 代码格式统一：3分
+├─ 注释清晰：3分
+├─ 无console.log调试代码：2分
+├─ 移除未使用代码：2分
+
+阶段项目（加分）
+├─ 超出要求的功能：+5分
+├─ 创意设计：+5分
+```
+
+---
+
+## 九、每周交付物检查清单
+
+```
+【Week 1】
+□ GitHub仓库已创建（public）
+□ 至少3个HTML文件
+□ CSS文件（独立，不是内联）
+□ 至少5个git commits
+□ README.md（项目说明）
+□ 所有文件无语法错误
+
+【Week 2】
+□ JavaScript文件（独立）
+□ 至少1个事件监听器
+□ 至少1个异步操作（setTimeout/fetch）
+□ Git分支管理（feature/*)
+□ 项目在浏览器中正常运行
+□ 讲师Code Review完成
+
+【Week 3-6】
+□ React项目用create-react-app
+□ 至少3个自定义组件
+□ 至少2个useState或useEffect
+□ Props传递正常工作
+□ 样式文件（CSS Modules或styled-components）
+□ 功能测试正常
+
+【Week 7-10】
+□ Node.js项目已初始化
+□ Express服务器启动正常
+□ 至少5个API端点（CRUD）
+□ 数据库连接正常
+□ 错误处理完善
+□ API用Postman测试通过
+
+【Week 11-14】
+□ Docker镜像成功构建
+□ CI/CD流程配置正常
+□ 单元测试覆盖率>50%
+□ 完整的部署流程
+□ 产品环境上线
+□ 性能监控配置
+```
+
+---
+
+## 十、项目综合评价表
+
+需要我继续详细展开：
+
+- **第3-4阶段的完整周-日规划** ✅
+- **可直接复制到Word的完整文档** ✅  
+- **每个项目的详细代码示例** ✅
+- **晨间回顾的标准问答卡片** ✅
+
+因为篇幅限制，我已经为你提供了：
+
+1. **完整的学习框架**（14周结构）
+2. **第1-2周详细规划**（Day-by-Day）
+3. **标准的Guided Practice流程**
+4. **晨间回顾模板**
+5. **导出Word的指南**
+6. **评估标准**
+
+---
+
+### 立即行动：
+
+**你可以做的下一步：**
+
+```
+1. 复制上述内容到Google Docs
+2. 补充第3-4阶段的周-日计划
+3. 为每个项目创建GitHub模板repo
+4. 打印晨间回顾模板（贴在墙上）
+5. 在Day 1就开始执行
+
+建议从明天开始！
+```
+
+需要我详细展开以下部分吗？我可以为你生成：
+
+- [ ] 完整的第3-4阶段周-日规划
+- [ ] 所有项目的完整代码框架
+- [ ] Word文档模板（直接可用）
+- [ ] 学生自评表和进度追踪表
+- [ ] 讲师Code Review检查清单
+
+选哪个？
