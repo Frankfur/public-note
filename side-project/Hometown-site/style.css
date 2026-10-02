@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box; /*作用是让元素的宽度包括内边距和边框，而不是只包括内容宽度。在特定情况下需要声明，这种情况包括了*/
+}
+
+h1 h2 h3 p {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+.top-header {
+  background-image: url("img/bg-img.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  aspect-ratio: 999 / 400;
+  height: auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  color: white;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.top-header h1 {
+  font-size: 4rem;
+}
+
+.top-header h3 {
+  font-size: 2rem;
+}
+
+/* 以下几份图片圆形图片效果制作： */
+.feature-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin: 0 0 20px;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Alignment of key sections */
+.key-sections {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  margin: 20px auto;
+  align-items: stretch;
+}
+
+.key-section {
+  width: 100%;
+  margin: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background: #fff;
+  border: 1px solid rgba(44, 62, 80, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 2px 2px rgba(15, 23, 42, 0.03);
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 12px;
+  border: 1px solid rgba(10, 61, 111, 0.914);
+  border-bottom: 5px solid rgba(10, 61, 111, 0.914);
+  width: 400px;
+  margin: 20px auto;
+  background-color: #7ca8ef;
+  color: #edf025;
+}
+
+.guide-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 20px;
+}
+
+footer {
+  font-family: "harmony sans", sans-serif;
+  text-align: center; /* 底部边框:颜色为灰色，宽度为1px，上边距为1px，背景颜色为浅灰色！  */
+  padding: 1rem;
+  color: gray;
+  font-size: 1rem;
+  border-top: 1px solid gray;
+  background: #eaecef;
+}
+/* 小屏幕 */
+@media (max-width: 600px) {
+  .top-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .top-header h3 {
+    font-size: 1rem;
+  }
+}
+
+/* 大屏幕 */
+@media (min-width: 1200px) {
+  .top-header h1 {
+    font-size: 2.4rem;
+  }
+
+  .top-header h3 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .key-sections {
+    grid-template-columns: 1fr;
+  }
+}

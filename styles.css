@@ -1,4 +1,4 @@
-/* 1. @font-face */
+/* 1. @font-face，作用是引入字体，使用的条件是 */
 @font-face {
   font-family: "HarmonyOS Sans Light";
   src: url("./fonts/harmonyos-sans/HarmonyOS_Sans_Light.ttf") format("truetype");
@@ -9,17 +9,17 @@
 /* 2. :root 颜色与尺寸变量 */
 :root {
   --color-page: #f5f7fa;
-  --color-surface: #fff;
-  --color-text: #1f2937;
-  --color-muted: #64748b;
-  --color-accent: #2f6fbd;
-  --color-accent-hover: #1f568e;
-  --color-accent-soft: #e8f4fd;
-  --color-border: rgba(44, 62, 80, 0.12);
-  --color-header: #2c3e50;
-  --color-header-end: #233548;
-  --color-on-header: #fff;
-  --color-header-link-hover: #7ec8ff;
+  --color-surface: #fff; /* 卡片背景色 */
+  --color-text: #1f2937; /* 文本颜色 */
+  --color-muted: #64748b; /* 次要文本颜色 */
+  --color-accent: #2f6fbd; /* 卡片标题颜色 */
+  --color-accent-hover: #1f568e; /* 卡片标题悬停颜色 */
+  --color-accent-soft: #e8f4fd; /* 卡片tag软颜色 */
+  --color-border: rgba(44, 62, 80, 0.12); /* 卡片边框颜色 */
+  --color-header: #2c3e50; /* 页头背景色 */
+  --color-header-end: #233548; /* 页头结束颜色 */
+  --color-on-header: #fff; /*页头文本颜色 */
+  --color-header-link-hover: #7ec8ff; /* 页头导航悬悬停颜色 */
 }
 
 /* 3. 全局与body样式 */

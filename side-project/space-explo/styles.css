@@ -34,6 +34,20 @@ h2 {
 }
 .header {
   background-image: url("img/space.gif");
-  background-size: cover;
+  background-size: cover; /* 设置背景图像覆盖整个元素,也可以使用百分比！ */
   color: white;
+}
+.content {
+  margin-top: 20rem;
+  padding-top: 20px;
+}
+
+footer {
+  font-family: "harmony sans", sans-serif;
+  text-align: center; /* 底部边框:颜色为灰色，宽度为1px，上边距为1px，背景颜色为浅灰色！  */
+  padding: 1rem;
+  color: gray;
+  font-size: 1rem;
+  border-top: 1px solid gray;
+  background: #eaecef;
 }
