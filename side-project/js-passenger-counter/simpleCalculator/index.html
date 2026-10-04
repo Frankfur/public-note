@@ -1,0 +1,39 @@
+<!-- 2026-10-04： 目的是测试JS代码是否正常运行 -->
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>Simple Calculator</h1>
+
+    <form class="calculator" onsubmit="return false;">
+      <!-- return false: 用作阻止表单提交 -->
+      <label>
+        1st Number:
+        <input id="num1-input" class="input" type="number" step="any" />
+      </label>
+      <!-- 第2个输入框 -->
+      <label>
+        2nd Number:
+        <input id="num2-input" class="input" type="number" step="any" />
+      </label>
+    </form>
+    <br />
+    <!-- 操作按钮 -->
+
+    <fieldset>
+      <legend>Operators</legend>
+      <button type="button" onclick="add()" class="operator">Add</button>
+      <button type="button" onclick="subtract()" class="operator">
+        Subtract
+      </button>
+      <button type="button" onclick="divide()" class="operator">Divide</button>
+      <button onclick="multiply()" class="operator">Multiply</button>
+    </fieldset>
+    <br />
+    <button type="button" onclick="clearInput()" class="clear">Clear</button>
+    <br />
+    <output id="result">Result: </output>
+    <script src="index.js"></script>
+  </body>
+</html>
