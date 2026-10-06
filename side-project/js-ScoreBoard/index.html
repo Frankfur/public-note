@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Score Board</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="team-cnt">
+      <h1 class="title">Home</h1>
+      <p id="home-score">0</p>
+      <div class="button-cnt">
+        <button id="add-btn-1" onclick="homeAddScoreOne()">+1</button>
+        <button id="add-btn-2" onclick="homeAddScoreTwo()">+2</button>
+        <button id="add-btn-3" onclick="homeAddScoreThree()">+3</button>
+      </div>
+    </div>
+
+    <div class="team-cnt">
+      <h1 class="title">Guest</h1>
+      <p id="guest-score">0</p>
+      <div class="button-cnt">
+        <button id="add-btn-1" onclick="guestAddScoreOne()">+1</button>
+        <button id="add-btn-2" onclick="guestAddScoreTwo()">+2</button>
+        <button id="add-btn-3" onclick="guestAddScoreThree()">+3</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

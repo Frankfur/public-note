@@ -37,3 +37,7 @@ button {
 #save-btn {
   background: darkgreen;
 }
+
+#clear-btn {
+  background: rgba(191, 102, 214, 0.565);
+}

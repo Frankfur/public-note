@@ -5,7 +5,7 @@ function getNumbers() {
   const num1 = parseFloat(num1Str);
   const num2 = parseFloat(num2Str);
   if (Number.isNaN(num1) || Number.isNaN(num2)) {
-    // 2 occasions of NaN: empty input or NaN value.
+    // 2 occasions of NaN: empty input or NaN value. Below 3 actions: output empty,alert, and return null.
     document.getElementById("result").textContent = "";
     alert("Please enter valid numbers.");
     return null;

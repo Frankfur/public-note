@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "pixel_lcd_7";
+  src: url("font/pixel_lcd_7.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  background-color: rgb(29, 36, 71);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.team-cnt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+}
+
+.title {
+  font-family: sans-serif;
+  color: white;
+}
+#home-score,
+#guest-score {
+  font-family: pixel_lcd_7;
+  color: rgb(214, 101, 114);
+  font-size: 48px;
+  margin-top: 20px;
+  border: 2px solid white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+  background-color: black;
+}
+
+.button-cnt {
+  display: flex;
+  justify-content: space-around;
+  gap: 16px;
+  font-family: pixel_lcd_7;
+}
+#add-btn-1,
+#add-btn-2,
+#add-btn-3 {
+  background-color: rgb(29, 36, 71);
+  font-family: pixel_lcd_7;
+  color: rgb(245, 245, 246);
+  border: 1px solid rgb(245, 245, 246);
+  border-radius: 5px;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+}

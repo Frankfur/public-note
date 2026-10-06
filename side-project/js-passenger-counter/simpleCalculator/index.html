@@ -18,9 +18,9 @@
         <input id="num2-input" class="input" type="number" step="any" />
       </label>
     </form>
-    <br />
-    <!-- 操作按钮 -->
 
+    <output id="result">Result: </output>
+    <!-- output 是一个输出元素，用于显示计算结果。使用的目的是为了在计算完成后，将结果显示在页面上。 -->
     <fieldset>
       <legend>Operators</legend>
       <button type="button" onclick="add()" class="operator">Add</button>
@@ -30,10 +30,8 @@
       <button type="button" onclick="divide()" class="operator">Divide</button>
       <button onclick="multiply()" class="operator">Multiply</button>
     </fieldset>
-    <br />
     <button type="button" onclick="clearInput()" class="clear">Clear</button>
-    <br />
-    <output id="result">Result: </output>
+
     <script src="index.js"></script>
   </body>
 </html>

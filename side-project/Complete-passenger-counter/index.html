@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Passenger Counter</title>
+  </head>
+  <body>
+    <div class="toggle-bar" role="group" aria-label="Feedback toggles">
+      <button type="button" id="sound-toggle-btn" aria-pressed="true">🔊 Sound</button>
+      <button type="button" id="vibe-toggle-btn" aria-pressed="true">📳 Vibe</button>
+    </div>
+    <h1>People entered:</h1>
+    <h2 id="count-el" role="status" aria-live="polite">0</h2>
+    <p>Total passengers (saved + current): <strong id="total-el">0</strong></p>
+    <button type="button" id="increment-btn">INCREMENT</button>
+    <button type="button" id="decrement-btn" disabled>-1</button>
+    <button type="button" id="save-btn">SAVE</button>
+    <p>Previous entries are:</p>
+    <ul id="entry-log" aria-label="Saved passenger entries"></ul>
+    <div class="clear-actions">
+      <button type="button" id="clear-btn">CLEAR</button>
+      <button type="button" id="export-btn">EXPORT CSV</button>
+    </div>
+    <p id="status-message" role="status" aria-live="polite"></p>
+    <script src="index.js"></script>
+  </body>
+</html>
