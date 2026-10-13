@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  min-width: 400px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #5f9341;
+  margin-bottom: 4px;
+}
+
+button {
+  background: #5f9341;
+  color: white;
+  padding: 10px 20px;
+  border: 1px solid #5f9341;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 3px solid #2563d6;
+  outline-offset: 2px;
+}
+
+#delete-btn {
+  background: white;
+  color: #5f9341;
+}
+
+#msg {
+  min-height: 1.2em;
+  margin: 8px 0 0;
+  font-size: 13px;
+  color: #b3261e;
+}
+
+ul {
+  margin-top: 12px;
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+li a,
+li span {
+  overflow-wrap: anywhere;
+}
+
+li.empty {
+  color: #777;
+  font-style: italic;
+}
+
+a {
+  color: #5f9341;
+}
+
+.remove-btn {
+  flex-shrink: 0;
+  background: white;
+  color: #5f9341;
+  padding: 0 8px;
+  line-height: 24px;
+}

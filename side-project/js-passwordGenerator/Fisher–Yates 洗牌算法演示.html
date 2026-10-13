@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fisher–Yates 洗牌算法演示</title>
+<style>
+:root{--bg:#f2f5f8;--panel:#fff;--fg:#1b2733;--muted:#66758a;--line:#d5dde6;--cur:#d9820b;--pick:#2563d6;--done:#1b8a63;--tile:#fff;--hl:rgba(217,130,11,.18);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171f;--panel:#17212c;--fg:#e6edf4;--muted:#93a3b6;--line:#2a3948;--cur:#f0a43a;--pick:#6aa2ff;--done:#3cc590;--tile:#1d2a38;--hl:rgba(240,164,58,.22)}}
+:root[data-theme="dark"]{--bg:#10171f;--panel:#17212c;--fg:#e6edf4;--muted:#93a3b6;--line:#2a3948;--cur:#f0a43a;--pick:#6aa2ff;--done:#3cc590;--tile:#1d2a38;--hl:rgba(240,164,58,.22)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.65 system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:860px;margin:0 auto;padding:20px 16px 40px}
+h1{font:700 26px/1.3 Georgia,"Songti SC",serif;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 16px}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+.bar label{display:flex;gap:6px;align-items:center;color:var(--muted)}
+button,select{font:inherit;color:var(--fg);background:var(--panel);border:1px solid var(--line);border-radius:8px;min-height:40px;padding:0 14px}
+button{cursor:pointer}button.main{background:var(--cur);border-color:var(--cur);color:#fff;font-weight:600}
+button:disabled{opacity:.45;cursor:default}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--pick);outline-offset:2px}
+.stage{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:58px 16px 72px;overflow:hidden}
+.zone{position:absolute;top:10px;font-size:13px;color:var(--muted)}
+.zone.r{right:14px;color:var(--done)}.zone.l{left:14px}
+.board{position:relative;margin:0 auto}
+.tile{position:absolute;top:0;display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:2px solid var(--line);border-radius:8px;background:var(--tile);font:700 calc(var(--w)*.42)/1 Georgia,"Songti SC",serif;transition:left .45s ease,border-color .2s,color .2s}
+.tile.done{border-color:var(--done);color:var(--done)}
+.tile.cur{border-color:var(--cur);outline:3px solid var(--cur);outline-offset:2px}
+.tile.pick{outline:3px solid var(--pick);outline-offset:2px;border-color:var(--pick)}
+.mk{position:absolute;text-align:center;font-weight:700;font-size:13px;transition:left .45s ease,opacity .2s;white-space:nowrap}
+.mk.i{top:-26px;color:var(--cur)}.mk.j{color:var(--pick)}
+.slot{position:absolute;text-align:center;color:var(--muted);font-size:12px}
+.wall{position:absolute;top:-34px;width:2px;background:var(--done);border-radius:1px;transition:left .45s ease}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+h2{font-size:15px;margin:0 0 8px}
+pre{margin:0;font:13px/1.8 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto}
+.ln{display:block;padding:0 8px;border-radius:4px;white-space:pre}
+.ln.on{background:var(--hl)}
+#say{min-height:3.3em;margin:0 0 8px}
+#log{margin:0;padding:0 0 0 18px;max-height:150px;overflow:auto;color:var(--muted);font-size:13px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:12px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:5px;border:2px solid}
+.note p{margin:0 0 8px}.note p:last-child{margin:0}
+@media(prefers-reduced-motion:reduce){.tile,.mk,.wall{transition:none}}
+</style>
+</head>
+<body>
+<main>
+<h1>Fisher–Yates 洗牌算法</h1>
+<p class="sub">从后往前，每一轮从“还没确定”的牌里随机抽一张放到当前位置，抽完就固定下来。</p>
+
+<div class="bar">
+  <button class="main" id="step">下一步</button>
+  <button id="auto">自动播放</button>
+  <button id="reset">重置</button>
+  <label>牌数 <select id="n"><option>5</option><option>6</option><option selected>8</option><option>10</option></select></label>
+  <label>速度 <input id="spd" type="range" min="1" max="5" value="3"></label>
+</div>
+
+<section class="stage" id="stage" aria-label="洗牌演示区">
+  <span class="zone l">待洗牌区（从这里随机抽）</span><span class="zone r">已确定区</span>
+  <div class="board" id="board"></div>
+</section>
+<div class="legend">
+  <span><i style="border-color:var(--cur)"></i>i：当前要确定的位置</span>
+  <span><i style="border-color:var(--pick)"></i>j：随机抽到的位置</span>
+  <span><i style="border-color:var(--done)"></i>已确定，不再移动</span>
+</div>
+
+<div class="grid">
+  <section class="card">
+    <h2>算法代码</h2>
+<pre><span class="ln" data-l="1">for (let i = n - 1; i &gt; 0; i--) {</span><span class="ln" data-l="2">  const j = randInt(0, i);    // 0 ≤ j ≤ i</span><span class="ln" data-l="3">  [a[i], a[j]] = [a[j], a[i]]; // 交换</span><span class="ln" data-l="4">}</span></pre>
+  </section>
+  <section class="card">
+    <h2>当前这一步</h2>
+    <p id="say"></p>
+    <ol id="log" reversed></ol>
+  </section>
+</div>
+
+<section class="card note" style="margin-top:16px">
+  <h2>为什么这样洗是公平的</h2>
+  <p>最后一个位置有 n 种选择，倒数第二个有 n−1 种……一共 n! 条路径，每种排列恰好对应一条，所以每种结果的概率都是 1/n!。</p>
+  <p>常见错误是每一轮都在整个数组里随机交换：这样有 nⁿ 条路径，而 nⁿ 无法被 n! 整除（n≥3），必然有些排列出现得更频繁。</p>
+</section>
+</main>
+
+<script>
+const $=s=>document.querySelector(s), G=10;
+const stage=$('#stage'), board=$('#board');
+let n,arr,i,j,phase,finished,timer=null,tiles,slots,mkI,mkJ,wall,count;
+
+function W(){return Math.max(28,Math.min(64,Math.floor((stage.clientWidth-32-(n-1)*G)/n)))}
+function mk(cls,txt){const d=document.createElement('div');d.className=cls;if(txt!=null)d.textContent=txt;board.appendChild(d);return d}
+function mark(l){document.querySelectorAll('.ln').forEach(e=>e.classList.toggle('on',+e.dataset.l===l))}
+function say(t){$('#say').textContent=t}
+function log(t){const li=document.createElement('li');li.textContent=t;$('#log').prepend(li)}
+function stop(){clearInterval(timer);timer=null;$('#auto').textContent='自动播放'}
+
+function build(){
+  stop();
+  n=+$('#n').value;
+  arr=[...Array(n)].map((_,k)=>k+1);
+  i=n-1;j=null;phase='pick';finished=false;count=0;
+  board.innerHTML='';$('#log').innerHTML='';
+  tiles=arr.map(v=>mk('tile',v));
+  slots=arr.map((_,k)=>mk('slot',k));
+  mkI=mk('mk i','i ▼');mkJ=mk('mk j','▲ j');wall=mk('wall');
+  mark(1);
+  say('点“下一步”开始：先处理最后一个位置（i = '+i+'）。每一步会先随机抽 j，再交换。');
+  layout();updateButtons();
+}
+
+function layout(){
+  const w=W(),s=w+G;
+  board.style.width=(n*w+(n-1)*G)+'px';board.style.height=w+'px';board.style.setProperty('--w',w+'px');
+  tiles.forEach((d,v)=>{
+    const k=arr.indexOf(v+1);
+    d.style.left=k*s+'px';d.style.width=d.style.height=w+'px';
+    d.classList.toggle('done',finished||k>i);
+    d.classList.toggle('cur',!finished&&k===i&&phase==='pick');
+    d.classList.toggle('pick',phase==='swap'&&k===j);
+  });
+  slots.forEach((d,k)=>{d.style.left=k*s+'px';d.style.width=w+'px';d.style.top=(w+6)+'px'});
+  mkI.style.width=mkJ.style.width=w+'px';
+  mkI.style.left=Math.max(i,0)*s+'px';mkI.style.opacity=finished?0:1;
+  mkJ.style.left=(j==null?0:j)*s+'px';mkJ.style.top=(w+26)+'px';mkJ.style.opacity=phase==='swap'?1:0;
+  wall.style.left=((i+1)*s-G/2-1)+'px';wall.style.height=(w+44)+'px';
+}
+
+function step(){
+  if(finished)return;
+  if(phase==='pick'){
+    // i 位置的牌高亮；先随机抽 j
+    j=Math.floor(Math.random()*(i+1));
+    phase='swap';mark(2);
+    const t='第 '+(n-i)+' 轮：i = '+i+'，在 0 到 '+i+' 里随机抽到 j = '+j+'（那里是牌 '+arr[j]+'）。';
+    say(t);log(t);
+  }else{
+    const a=arr[i],b=arr[j];
+    if(i!==j)[arr[i],arr[j]]=[arr[j],arr[i]];
+    mark(3);
+    let t=i===j?'j 恰好等于 i，牌 '+a+' 与自己交换，留在原位。位置 '+i+' 已确定。'
+                :'交换位置 '+i+' 和 '+j+'：牌 '+a+' 与牌 '+b+' 互换。位置 '+i+' 现在是牌 '+b+'，已确定。';
+    j=null;i--;phase='pick';
+    if(i<=0){finished=true;i=-1;mark(0);stop();t+=' 只剩位置 0，自动确定。洗牌完成：'+arr.join(' ')}
+    say(t);log(t);
+  }
+  layout();updateButtons();
+}
+
+function updateButtons(){$('#step').disabled=finished;$('#auto').disabled=finished}
+function delay(){return [1800,1200,800,450,220][$('#spd').value-1]}
+function start(){stop();$('#auto').textContent='暂停';timer=setInterval(step,delay())}
+
+$('#step').onclick=()=>{stop();step()};
+$('#auto').onclick=()=>timer?stop():start();
+$('#reset').onclick=build;
+$('#n').onchange=build;
+$('#spd').oninput=()=>{if(timer)start()};
+addEventListener('resize',layout);
+build();
+</script>
+</body>
+</html>

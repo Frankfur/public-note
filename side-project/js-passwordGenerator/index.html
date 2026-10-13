@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- header section -->
+    <header class="site-header">
+      <!-- text section -->
+      <div class="text-sec">
+        <h1 class="generate-a">Generate a</h1>
+        <h1 class="random-password">random password</h1>
+        <p class="description">Never use an insecure password again.</p>
+      </div>
+      <!-- password generator section -->
+      <div class="password-generator">
+        <!-- generate button -->
+        <button class="generate-password" onclick="generatePassword()">
+          Generate Password
+        </button>
+      </div>
+      <!-- password input -->
+      <form id="passwordForm">
+        <input
+          type="text"
+          id="password-1"
+          class="password"
+          readonly="readonly"
+        />
+        <input
+          type="text"
+          id="password-2"
+          class="password"
+          readonly="readonly"
+        />
+      </form>
+    </header>
+    <!-- footer section -->
+    <footer class="site-footer">
+      <p>
+        &copy; 2026 Frankfur | All Rights Reserved. <br />
+        Built with HTML & CSS & JavaScript. |
+        <a
+          href="https://github.com/Frankfur"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+      </p>
+    </footer>
+    <!-- script section -->
+    <script src="script.js"></script>
+  </body>
+</html>

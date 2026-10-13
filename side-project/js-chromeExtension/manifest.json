@@ -1,0 +1,11 @@
+{
+  "manifest_version": 3,
+  "name": "Leads Tracker",
+  "version": "1.0",
+  "description": "Save links and notes, and keep them between sessions.",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Leads Tracker"
+  },
+  "permissions": ["activeTab"]
+}
