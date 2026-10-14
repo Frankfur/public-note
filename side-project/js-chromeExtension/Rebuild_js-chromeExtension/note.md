@@ -1,5 +1,21 @@
 # 2026-10-13｜JavaScript 基础功能与数据持久化
 
+keyTakeaway:
+
+1. js代码结构，顶部定义变量，底部调用函数。
+2. 函数function loadSavedLeads()， 体现了这个函数体现了**"防御性编程"**思想——不信任任何外部数据，做好最坏的打算，保证程序永远稳定运行
+3. 数据持久化，使用localStorage存储数据：过程是 读取数组 - 转化为字符串 - 存储到localStorage - 从localStorage读取字符串 - 转化为数组
+
+**基础语法速查**:
+
+1. JSON.stringify(): 将对象/数组转换为 JSON 字符串。
+2. JSON.parse(): 将 JSON 字符串转换为对象。
+3. localStorage.setItem(): 存储数据到本地存储。
+4. localStorage.getItem(): 从本地存储读取数据。
+5. localStorage.removeItem(): 删除本地存储中的数据。
+6. Array.isArray(): 检查变量是否为数组。
+7. typeof lead === "string": 检查变量是否为为字符串。
+
 ## 一、项目模块回顾
 
 项目分为三个主要部分：
@@ -231,4 +247,11 @@ localStorage.setItem(STORAGE_KEY, JSON.stringify(savedLeads));
 
 补充说明：我把原笔记中的“`console.error()` 系统提示”改成了“记录错误”。`console.error()` 是开发调试时写入浏览器控制台的错误信息；面向用户的页面提示则由 `msgEl.textContent` 显示。
 ```
+整体代码的结构如下: 配置：STORAGE_KEY
+DOM 元素引用：输入框、提示区、清单和按钮
+应用数据：调用 loadSavedLeads() 初始化 savedLeads
+存储函数：读取和写入 localStorage
+渲染函数：render(leads)
+操作函数：saveInput()
+事件绑定与初始化渲染：点击、Enter 和首次调用 render()
 ````
