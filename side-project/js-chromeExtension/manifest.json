@@ -1,11 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Leads Tracker",
+  "name": "Notes & URLs Tracker",
   "version": "1.0",
-  "description": "Save links and notes, and keep them between sessions.",
+  "description": "A simple tool to save links and notes. You may easily write & save your notes & links for later reference without getting out of Chrome.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Leads Tracker"
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
   },
   "permissions": ["activeTab"]
 }

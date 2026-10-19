@@ -1,83 +1,112 @@
 body {
+  font-family: Arial, sans-serif;
   margin: 0;
-  padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0.5rem;
+  background-color: #f4f4f4;
+  /* 最小宽度：确保扩展在小屏幕下也能正常显示 */
   min-width: 400px;
 }
 
 input {
-  width: 100%;
-  padding: 10px;
-  box-sizing: border-box;
-  border: 1px solid #5f9341;
-  margin-bottom: 4px;
+  width: 100%; /* 输入框宽度占满父元素宽度 */
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #5f9341; /* 输入框边框颜色及圆角 */
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  cursor: text; /* 光标在输入框内时及经过时，鼠标指针为文本输入状态 */
+  box-sizing: border-box; /* 包含内边距和边框的总宽度，防止内容超出宽度限制，即溢出！ */
 }
 
-button {
-  background: #5f9341;
-  color: white;
-  padding: 10px 20px;
-  border: 1px solid #5f9341;
-  font-weight: bold;
-  cursor: pointer;
+/* 键盘焦点状态:追踪鼠标与键盘，提供视觉反馈。
+鼠标用户：能看到光标在输入框内
+键盘用户：按 Tab 键切换焦点时，需要视觉反馈*/
+input:focus {
+  outline: 3px solid #2f6fbd; /* 边框大小：输入框聚焦时的边框颜色 */
+  outline-offset: 3px; /* 边框位置：输入框聚焦时的边框四周的偏移量 */
+  border-color: #3d6b2a; /* 边框颜色：输入框聚焦时的边框颜色加深 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* 阴影：输入框聚焦时的阴影效果 */
 }
 
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* 按钮设置 
+区分按钮：用颜色区分功能优先级（主/次/危险）
+容易点击：flex 布局 + 足够间距 + 最小宽度
+保留焦点：:focus-visible 只对键盘用户显示轮廓*/
+#input-btn {
+  background-color: #5f9341; /* 按钮背景颜色 */
+  color: white; /* 按钮文字颜色 */
 }
-
-button:focus-visible,
-input:focus-visible,
-a:focus-visible {
-  outline: 3px solid #2563d6;
-  outline-offset: 2px;
+#tab-btn {
+  background-color: white; /* 按钮背景颜色 */
+  color: #5f9341; /* 按钮文字颜色 */
+  border: 2px solid #5f9341; /* 按钮边框颜色 */
 }
 
 #delete-btn {
-  background: white;
+  background-color: white; /* 按钮背景颜色 */
+  color: #d32f2f; /* 按钮文字颜色 */
+  border: 2px solid #d32f2f; /* 按钮边框颜色 */
+}
+
+.button-container {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.button-container button {
+  /* 按钮选择器：大项目中，应用上级选择器带出选择器为佳，防止应用范围失控 */
+  flex: 1;
+  min-width: 100px; /* 按钮最小宽度 */
+  padding: 0.6rem 0.8rem; /* 按钮内边距,更大的点击区域 */
+  border-radius: 5px;
+}
+/* 按钮聚焦状态:focus-visible:只针对键盘用户，当按钮获得焦点时，按钮会显示一个可见的边框，以提供视觉反馈。 */
+.button-container button:focus-visible {
+  outline: 3px solid #2f6fbd;
+  outline-offset: 2px;
+}
+/* 信息区设置
+1. 设置默认高度，防止页面突然抖动； */
+#msg-el {
+  min-height: 1.2em; /* 信息区最小高度，保留长文字的显示空间 */
+  margin: 8px 0;
+  font-size: 13px;
   color: #5f9341;
 }
 
-#msg {
-  min-height: 1.2em;
-  margin: 8px 0 0;
-  font-size: 13px;
-  color: #b3261e;
+/* saved leads区域设置 */
+#ul-el {
+  list-style: none; /* 去掉默认的列表样式 */
+  padding: 0;
+  margin: 0.5rem 0; /* 列表整体保持上下间距 */
 }
 
-ul {
-  margin-top: 12px;
-  list-style: none;
-  padding-left: 0;
-}
-
-li {
-  margin-top: 5px;
+#ul-el li {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e0e0; /* 列表项底部边框？ */
 }
 
-li a,
-li span {
+#ul-el li > a,
+#ul-el li > span {
+  flex: 1;
+  min-width: 0;
   overflow-wrap: anywhere;
 }
 
-li.empty {
-  color: #777;
-  font-style: italic;
+#ul-el li > a {
+  text-decoration: none; /* 去掉默认的下划线 */
+  display: block;
 }
 
-a {
-  color: #5f9341;
+#ul-el a:hover {
+  color: #3d6b2a; /* 鼠标悬停时链接颜色 */
 }
 
-.remove-btn {
-  flex-shrink: 0;
-  background: white;
-  color: #5f9341;
-  padding: 0 8px;
-  line-height: 24px;
+#ul-el .empty {
+  color: #999; /* 空列表提示颜色 */
+  font-style: italic; /* 空列表提示字体样式 */
+  padding: 0.5rem; /* 空列表提示内边距 */
 }

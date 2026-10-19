@@ -213,14 +213,57 @@ localStorage.setItem(STORAGE_KEY, JSON.stringify(savedLeads));
 ```text
 触发事件监听器
 → 调用 saveInput()
-→ 读取并 trim 输入
+→ 调用 addLead(inputEl.value)
+→ trim 输入
 → 空值检查
 → 重复检查
 → 将新内容 push 到 savedLeads
 → 尝试保存到 localStorage
 → 保存失败则 pop 回滚并结束
-→ 保存成功则显示提示、清空输入框、调用 render()
+→ 保存成功则显示提示并调用 render()
+→ saveInput() 清空输入框
 ```
+
+### 点击 Save Tab
+
+```text
+触发 Save Tab 的点击监听器
+→ chrome.tabs.query() 查询当前窗口的活动标签页
+→ 检查查询结果和 URL
+→ 将 URL 交给 addLead()
+→ 复用去重、持久化和渲染流程
+```
+
+读取活动标签页需要扩展在 `manifest.json` 中声明 `activeTab` 权限。
+
+### 配置扩展图标
+
+将正方形 PNG 图标放到扩展目录的 `icons/` 文件夹，并在 `manifest.json` 的 `icons` 和 `action.default_icon` 中配置相对路径。项目使用 16、32、48、128 像素图标；修改后需在 `chrome://extensions/` 重新加载扩展。
+
+### 删除单条记录
+
+```text
+点击某条记录旁的 Delete 按钮
+→ render() 创建按钮时保存该记录的索引
+→ 调用 removeLead(index)
+→ 从 savedLeads 移除对应记录
+→ 尝试持久化
+→ 保存失败则将记录插回原索引
+→ 保存成功则重新渲染清单
+```
+
+### 删除全部记录
+
+```text
+点击 Delete All
+→ 从 localStorage 移除 STORAGE_KEY
+→ 清空 savedLeads
+→ 调用 render() 显示空状态
+```
+
+### 显示可点击链接
+
+`toHttpUrl(text)` 尝试把记录识别为 HTTP 或 HTTPS URL。没有协议的域名会按 HTTPS 处理；其他文本、无效地址以及非 HTTP(S) 协议不会生成链接。`render()` 对有效 URL 创建 `<a>`，并使用 `textContent` 设置显示文字；链接在新标签页打开，并设置 `rel="noopener noreferrer"`。非 URL 的记录仍显示为普通文本。
 
 ---
 
@@ -229,29 +272,38 @@ localStorage.setItem(STORAGE_KEY, JSON.stringify(savedLeads));
 1. **区分定义和调用**：定义函数不会自动运行；调用函数才会执行函数体。
 2. **先校验，再修改数据**：空输入和重复内容都应在 `push()` 之前拦截。
 3. **数据与视图分工**：数组保存数据，`render()` 负责把数组显示到页面。
-4. **复用处理逻辑**：按钮点击和 Enter 键都调用 `saveInput()`。
+4. **复用处理逻辑**：按钮点击和 Enter 键都调用 `saveInput()`；Save Input 和 Save Tab 共用 `addLead()`。
 5. **安全渲染文本**：使用 `textContent` 显示记录内容。
-6. **处理持久化异常**：记录错误、提示用户，并在写入失败时撤销本次数组修改。
-7. **保持 HTML 与 JavaScript 一致**：HTML 的 `id` 与 JavaScript 的选择器需要对应；同一按钮不要重复绑定点击处理器。
+6. **处理持久化异常**：记录错误、提示用户，并在写入失败时撤销本次数组修改；删除单条记录失败时恢复原记录。
+7. **按索引操作列表项**：渲染每条记录时，将其索引交给对应的删除按钮。
+8. **保持 HTML 与 JavaScript 一致**：HTML 的 `id` 与 JavaScript 的选择器需要对应；同一按钮不要重复绑定点击处理器。
 
 ---
 
-## 九、后续可以继续学习的内容
+## 九、已完成与后续可以继续学习的内容
 
-- 保存当前活动标签页的 URL（Save Tab）。
-- 删除单条记录和清空全部记录。
-- 让每条记录显示为可点击链接。
+已完成：手动输入保存、按 Enter 保存、保存当前活动标签页 URL、删除单条记录、清空全部记录、将 HTTP/HTTPS URL 显示为可点击链接。
+
+后续可以继续学习：
+
 - 将练习版的 `localStorage` 改为 Chrome 扩展提供的 `chrome.storage`。
 
 ```
 
 补充说明：我把原笔记中的“`console.error()` 系统提示”改成了“记录错误”。`console.error()` 是开发调试时写入浏览器控制台的错误信息；面向用户的页面提示则由 `msgEl.textContent` 显示。
 ```
-整体代码的结构如下: 配置：STORAGE_KEY
-DOM 元素引用：输入框、提示区、清单和按钮
-应用数据：调用 loadSavedLeads() 初始化 savedLeads
-存储函数：读取和写入 localStorage
-渲染函数：render(leads)
-操作函数：saveInput()
-事件绑定与初始化渲染：点击、Enter 和首次调用 render()
-````
+整体代码的结构如下：
+
+1. 配置：`STORAGE_KEY`。
+2. DOM 元素引用：输入框、提示区、清单和各个按钮。
+3. 数据读取：`loadSavedLeads()` 加载并校验 `savedLeads`。
+4. 清单渲染：`toHttpUrl(text)` 识别 HTTP(S) 地址；`render(leads)` 显示可点击链接、普通文本、空状态和单条删除按钮。
+5. 数据持久化：`persistSavedLeads()` 将数组保存到 `localStorage`。
+6. 记录操作：`addLead()`、`saveInput()`、`removeLead()` 和 `deleteAllLeads()`。
+7. 初始化与事件绑定：首次渲染清单，并绑定输入、Save Tab 和删除按钮事件。
+扩展整体如何加载到浏览器？
+打开 Chrome 浏览器，地址栏输入 chrome://extensions/ 并回车。
+开启右上角的 “开发者模式” (Developer mode) 开关。
+点击左上角的 “加载已解压的扩展程序” (Load unpacked)。
+选择你的项目文件夹：/Users/ersheng/Desktop/web_project/public-note/side-project/js-chromeExtension/Rebuild_js-chromeExtension/。
+如果一切正常，你会看到扩展图标出现在浏览器右上角！

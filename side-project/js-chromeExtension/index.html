@@ -1,24 +1,36 @@
-<!DOCTYPE html>
+<!-- 2026-10-11：review and write all the code by hand. -->
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Leads Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
+    <title>JS-chromeExtension</title>
   </head>
   <body>
-    <input
-      type="text"
-      id="input-el"
-      placeholder="Paste a link or type a note"
-      aria-label="Link or note to save"
-    />
-    <button type="button" id="input-btn">SAVE INPUT</button>
-    <button type="button" id="tab-btn">SAVE TAB</button>
-    <button type="button" id="delete-btn" title="Double-click to delete all">
-      DELETE ALL
-    </button>
-    <p id="msg" role="status" aria-live="polite"></p>
-    <ul id="ul-el"></ul>
+    <main>
+      <!-- title -->
+      <h1>Chrome Bucket</h1>
+      <!-- input fields： 定义与引用标识符（id="input-el") -->
+      <label for="input-el"
+        >Input your URL: <input type="text" id="input-el"
+      /></label>
+      <!-- buttons:naming convention unified. -->
+      <div class="button-container">
+        <button type="button" id="input-btn">Save Input</button>
+        <button type="button" id="tab-btn">Save Tab</button>
+        <button type="button" id="delete-btn">Delete All</button>
+      </div>
+      <!-- saved leads container: 显示已保存的链接列表。
+       定义与引用标识符（id="saved-leads-heading") -->
+      <div class="saved-leads-container">
+        <h2 id="saved-leads-heading">Saved Leads:</h2>
+        <!-- Status message: 操作反馈区， role, aria-live属性含义厘清： 前者是信息提示，后者非侵入式语音播报。 -->
+        <p id="msg-el" role="status" aria-live="polite"></p>
+        <!-- ul list for saved leads，aria-labelledby属性关联到h2标签，便于语音播报。 -->
+        <ul id="ul-el" aria-labelledby="saved-leads-heading"></ul>
+      </div>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>

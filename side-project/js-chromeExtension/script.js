@@ -1,52 +1,52 @@
-const STORAGE_KEY = "myLeads";
+//首轮只做静态的渲染，随后再接入数据。这是基本的思路！ 页面元素绑定、数据数组和安全渲染. 首先，测试数组渲染是否ok？带数据与空数据都测试；
+// ============DOM元素========
+const STORAGE_KEY = "saveLeads";
+const inputEl = document.querySelector("#input-el");
+const msgEl = document.querySelector("#msg-el");
+const ulEl = document.querySelector("#ul-el");
+const inputBtn = document.querySelector("#input-btn");
+const tabBtn = document.querySelector("#tab-btn");
+const deleteBtn = document.querySelector("#delete-btn");
 
-const inputEl = document.getElementById("input-el");
-const inputBtn = document.getElementById("input-btn");
-const tabBtn = document.getElementById("tab-btn");
-const deleteBtn = document.getElementById("delete-btn");
-const ulEl = document.getElementById("ul-el");
-const msgEl = document.getElementById("msg");
-
-let myLeads = loadLeads();
-render(myLeads);
-
-// ---------- storage ----------
-
-// Reads the saved list. Falls back to [] if nothing is saved or the data is corrupted.
-function loadLeads() {
+//===========核心功能函数定义： 1. 页面初始化（loadSavedLeads）
+// ============从localStorage读取数据并转化为数组，供后面render()使用.========
+function loadSavedLeads() {
   try {
-    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-    return Array.isArray(saved)
-      ? saved.filter((item) => typeof item === "string")
-      : [];
-  } catch {
+    //从localStorage读取数据，Key: STORAGE_KEY
+    const storedLeads = localStorage.getItem(STORAGE_KEY);
+    //如果localStorage中没有数据，返回空数组
+    if (storedLeads === null) {
+      return [];
+    }
+
+    const parsedLeads = JSON.parse(storedLeads);
+    if (
+      //如果读取到的数据是数组，且数组中的每个元素都是字符串，才返回数组
+      Array.isArray(parsedLeads) &&
+      parsedLeads.every((lead) => typeof lead === "string")
+    ) {
+      return parsedLeads;
+    }
+    //如果读取到的数据不是数组，或者数组中的元素不是字符串，返回空数组
+    console.error("Invalid leads format: ", parsedLeads);
+    msgEl.textContent = "Invalid leads format.";
+    return []; //这一步是用来承接异常输入，避免程序崩溃。
+  } catch (error) {
+    console.error("Error loading leads:", error);
+    msgEl.textContent = "Error loading leads.";
     return [];
   }
 }
 
-function saveLeads() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(myLeads));
-}
-
-// ---------- helpers ----------
-
-let messageTimer;
-function showMessage(text) {
-  msgEl.textContent = text;
-  clearTimeout(messageTimer);
-  messageTimer = setTimeout(() => {
-    msgEl.textContent = "";
-  }, 2500);
-  return false;
-}
-
-// Returns a safe http(s) URL string, or null if the text shouldn't be a link.
-// "example.com" becomes https://example.com; "hello world" and "javascript:..." return null.
 function toHttpUrl(text) {
   const hasScheme = /^[a-z][a-z\d+.-]*:/i.test(text);
   const looksLikeDomain = !/\s/.test(text) && text.includes(".");
   const candidate = hasScheme ? text : looksLikeDomain ? "https://" + text : null;
-  if (!candidate) return null;
+
+  if (!candidate) {
+    return null;
+  }
+
   try {
     const url = new URL(candidate);
     return url.protocol === "http:" || url.protocol === "https:" ? url.href : null;
@@ -55,98 +55,141 @@ function toHttpUrl(text) {
   }
 }
 
-// ---------- actions ----------
-
-// Validates, de-duplicates, saves and re-renders. Returns true only if something was added.
-function addLead(raw) {
-  const text = raw.trim();
-  if (!text) return showMessage("Nothing to save. Type or paste something first.");
-  if (myLeads.includes(text)) return showMessage("Already saved.");
-  myLeads.push(text);
-  saveLeads();
-  render(myLeads);
-  return true;
-}
-
-function removeLead(index) {
-  myLeads = myLeads.filter((_, i) => i !== index);
-  saveLeads();
-  render(myLeads);
-}
-
-// ---------- rendering ----------
-
-// Builds DOM nodes with textContent, so user input is never parsed as HTML.
+// ============渲染数组.========
 function render(leads) {
-  ulEl.replaceChildren();
+  ulEl.replaceChildren(); //清空列表.相比.textContent=""更安全也更合语义，因为会清空所有子元素，包括文本节点。
 
   if (leads.length === 0) {
-    const li = document.createElement("li");
-    li.className = "empty";
-    li.textContent = "No saved leads yet.";
-    ulEl.append(li);
-    return;
+    // 如果没有保存的记录，显示提示信息
+    const emptyItem = document.createElement("li"); //贴遥控标签（外壳）
+    emptyItem.className = "empty"; //给壳添加class
+    emptyItem.textContent = "No leads saved yet."; //给壳填内容
+    ulEl.append(emptyItem); //把壳放到ul元素的列表里，并显示出来；
+    return; //返回,不执行后续操作
   }
 
-  leads.forEach((lead, index) => {
-    const li = document.createElement("li");
+  for (const [index, lead] of leads.entries()) {
+    const item = document.createElement("li");
 
     const href = toHttpUrl(lead);
-    let label;
+    const label = document.createElement(href ? "a" : "span");
     if (href) {
-      label = document.createElement("a");
       label.href = href;
       label.target = "_blank";
       label.rel = "noopener noreferrer";
-    } else {
-      label = document.createElement("span");
     }
     label.textContent = lead;
 
     const removeBtn = document.createElement("button");
     removeBtn.type = "button";
-    removeBtn.className = "remove-btn";
-    removeBtn.textContent = "×";
+    removeBtn.textContent = "Delete";
     removeBtn.setAttribute("aria-label", "Delete " + lead);
-    removeBtn.addEventListener("click", function () {
+    removeBtn.addEventListener("click", () => {
       removeLead(index);
     });
 
-    li.append(label, removeBtn);
-    ulEl.append(li);
-  });
+    item.append(label, removeBtn);
+    ulEl.append(item);
+  }
 }
 
-// ---------- events ----------
-
-inputBtn.addEventListener("click", function () {
-  if (addLead(inputEl.value)) inputEl.value = "";
-});
-
-inputEl.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") inputBtn.click();
-});
-
-// chrome.tabs only exists inside the extension, not on a normal web page.
-if (typeof chrome === "undefined" || !chrome.tabs) {
-  tabBtn.disabled = true;
-  tabBtn.title = "SAVE TAB only works when loaded as a Chrome extension";
-} else {
-  tabBtn.addEventListener("click", function () {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      const url = tabs && tabs[0] && tabs[0].url;
-      if (chrome.runtime.lastError || !url) {
-        showMessage("Couldn't read this tab's address.");
-        return;
-      }
-      addLead(url);
-    });
-  });
+function persistSavedLeads() {
+  try {
+    //持久化保存数据，Key: STORAGE_KEY;输出的结果（true/false会在后面的函数inputBtn.addEventListener中使用）
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedLeads)); //将数组转换为字符串，再存储到localStorage，key为STORAGE_KEY
+    return true;
+  } catch (error) {
+    console.error("Error saving leads:", error);
+    msgEl.textContent = "Error saving leads.";
+    return false;
+  }
 }
 
-// Double-click guards against wiping the list by accident.
-deleteBtn.addEventListener("dblclick", function () {
-  localStorage.removeItem(STORAGE_KEY);
-  myLeads = [];
-  render(myLeads);
+// ============点击按钮保存手动输入========
+
+function addLead(raw) {
+  const newLead = raw.trim();
+
+  if (newLead === "") {
+    msgEl.textContent = "Please enter a lead.";
+    return false;
+  }
+
+  if (savedLeads.includes(newLead)) {
+    msgEl.textContent = "This lead already exists.";
+    return false;
+  }
+
+  savedLeads.push(newLead);
+  if (!persistSavedLeads()) {
+    savedLeads.pop();
+    return false;
+  }
+
+  msgEl.textContent = "You saved: " + newLead;
+  render(savedLeads);
+  return true;
+}
+
+function saveInput() {
+  if (addLead(inputEl.value)) {
+    inputEl.value = "";
+  }
+}
+
+function removeLead(index) {
+  if (!Number.isInteger(index) || index < 0 || index >= savedLeads.length) {
+    return false;
+  }
+
+  const [removedLead] = savedLeads.splice(index, 1);
+
+  if (!persistSavedLeads()) {
+    savedLeads.splice(index, 0, removedLead);
+    return false;
+  }
+
+  render(savedLeads);
+  msgEl.textContent = "Lead deleted.";
+  return true;
+}
+
+function deleteAllLeads() {
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    console.error("Error deleting leads:", error);
+    msgEl.textContent = "Error deleting leads.";
+    return;
+  }
+
+  savedLeads.length = 0;
+  render(savedLeads);
+  msgEl.textContent = "All leads deleted.";
+}
+
+// ============加载数据 & 初始化调用（需要单列）作为加载或空数组的渲染。========
+const savedLeads = loadSavedLeads();
+render(savedLeads);
+
+inputBtn.addEventListener("click", saveInput);
+inputEl.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    saveInput();
+  }
 });
+
+tabBtn.addEventListener("click", () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    const url = tabs && tabs[0] && tabs[0].url;
+    if (chrome.runtime.lastError || !url) {
+      console.error("Error reading active tab:", chrome.runtime.lastError);
+      msgEl.textContent = "Couldn't read this tab's address.";
+      return;
+    }
+
+    addLead(url);
+  });
+});
+
+deleteBtn.addEventListener("click", deleteAllLeads);
